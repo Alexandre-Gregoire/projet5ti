@@ -1,0 +1,101 @@
+body{
+    background-image: url('../Images/Background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 16px);
+    font-size: 2vmax;
+    font-family: cursive;
+    text-align: center;
+    margin: 0;
+}
+.mid h4{
+    opacity: 25%;
+    font-size: 1.5vmax;
+    margin: 0 0 0.3vmax 0;
+}
+.mid h1{
+    margin: 0;
+}
+.mid{
+    border: solid 1px black;
+    background-color: white;
+    border-radius: 20px;
+    padding: 0px 1vmax 0vmax 1vmax;
+    font-family: cursive;
+    vertical-align: middle;
+    margin: 8vmax 35vmax 8vmax 35vmax ;
+}
+input{
+    border-radius: 10px;
+    font-size: 1.3vmax;
+    padding: 0.4vmax;
+    margin: 0 0 0.7vmax 0;
+    font-family: cursive;
+}
+Button{
+    border-radius: 10px;
+    font-size: 1.5vmax;
+    padding: 0.3vmax 1vmax 0.5vmax 1vmax;
+    
+    font-family: cursive;
+    background: white;
+    margin-bottom: 0.1vmax;
+    
+
+    
+}
+button:hover{
+    background-image:url(../Images/Background.png);
+    background-size: cover;
+    margin-bottom: 0vmax;
+    padding: 0.4vmax 1.1vmax 0.6vmax 1.1vmax;
+}
+@media only screen and (max-width: 940px) {
+    .mid{
+        border-radius: 20px;
+        padding: 0px 1.8vmax 1.8vmax 1.8vmax;
+        margin-top: 13vmax;
+    }
+    input{
+        font-size: 2vmax;
+        padding: 0.7vmax;
+        margin: 0 0 1vmax 0;
+    }
+    Button{
+        font-size: 3vmax;
+        padding: 0.6vmax 2vmax 1vmax 2vmax;
+    }
+    button:hover{
+        padding: 0.7vmax 2.1vmax 1.1vmax 2.1vmax;
+    }
+  }
+.signUp{
+    display: block;
+    font-size: 0.8vmax;
+    margin: 0;
+    margin-bottom: 0.9vmax;
+}
+footer{
+    background-color: orangered;
+    height: 100px;
+    margin: 0;
+
+}
+header{
+    background-color: orange;
+    padding: 30px;
+}
+.menu{
+    list-style: none;
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+
+    
