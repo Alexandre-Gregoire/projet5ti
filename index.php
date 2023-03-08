@@ -1,7 +1,8 @@
 <?php
     
     require_once "Config/databaseConnexion.php";
-    /*try {
+    /*
+    try {
         $query = "SELECT * FROM `biens`";
         $ajoute = $pdo->prepare($query);
         $ajoute->execute();
