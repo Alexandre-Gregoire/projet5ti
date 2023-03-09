@@ -16,3 +16,22 @@ function createUser($pdo)
         die($message);
     }
 }
+function connectUser($pdo){
+    try {
+        $query = "select * from utilisateur where utilisateurPseudo = :loginUser and utilisateurMdp = :passwordUser";
+        $connectUser = $pdo->prepare($query);
+        $connectUser->execute([
+            'loginUser' => $_POST['pseudo'],
+            'passwordUser' => $_POST['password'],
+        ]);
+        $user = $connectUser->fetch();
+        //var_dump($user);
+        if($user)
+        {
+            $_SESSION['user'] = $user;
+        }
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}

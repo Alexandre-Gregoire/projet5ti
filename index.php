@@ -1,18 +1,7 @@
 <?php
-    
+    session_start();
     require_once "Config/databaseConnexion.php";
-    /*
-    try {
-        $query = "SELECT * FROM `biens`";
-        $ajoute = $pdo->prepare($query);
-        $ajoute->execute();
-        $biens = $ajoute->fetchAll();
-    } catch (PDOException $e) {
-        $message = $e->getMessage();
-        die($message);
-    }
-    echo '<pre>' , var_dump($biens) , '</pre>';
-    */
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -28,7 +17,13 @@
     <header>
         <ul class="flex space-evenly ">
             <li class="menu"><a href="/">Home</a></li>
-            <li class="menu"><a href="connexion">connexion</a></li>
+            <li  class="menu">
+                <?php if(isset($_SESSION['user'])) : ?>
+                    <a href="deconnexion">Deconnexion</a>
+                <?php else :?>
+                    <a href="connexion">Connexion</a>
+                <?php endif ?>
+            </li>
             <li class="menu"><a href="inscription">inscription</a></li>
         </ul>
     </header>
