@@ -2,9 +2,7 @@
 require_once("Models/userModel.php");
 $uri = $_SERVER['REQUEST_URI'];
 
-if($uri === "/" || $uri === "index.php"){
-    require_once "Templates/Questions/acceuil.php";
-}elseif ($uri === "/inscription") {
+if ($uri === "/inscription") {
     if(isset($_POST['btnEnvoi']))
     {
         $messageErrorLogin = verifData();

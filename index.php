@@ -34,7 +34,8 @@
     <main>
         
         <?php 
-        require_once "Controllers/usersController.php"
+        require_once "Controllers/usersController.php";
+        require_once "Controllers/quizzController.php";
         ?>
     </main>
     <footer>

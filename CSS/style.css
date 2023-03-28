@@ -3,9 +3,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     height: calc(100vh - 16px);
-    font-size: 2vw;
     font-family: cursive;
-    text-align: center;
     margin: 0;
 }
 .mid h4{
@@ -17,6 +15,8 @@ body{
     margin: 0;
 }
 .mid{
+    font-size: 2vw;
+    text-align: center;
     border: solid 1px black;
     background-color: white;
     border-radius: 20px;
@@ -38,7 +38,7 @@ input{
     background-size: cover;
 
 }
-/*@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 940px) {
     .mid{
         border-radius: 20px;
         padding: 0px 1.8vw 1.8vw 1.8vw;
@@ -56,7 +56,7 @@ input{
     button:hover{
         padding: 0.7vw 2.1vw 1.1vw 2.1vw;
     }
-  }*/
+  }
 .signUp{
     display: block;
     font-size: 0.8vw;
@@ -75,6 +75,7 @@ footer{
 header{
     background: linear-gradient(rgb(255, 196, 0),rgb(196, 168, 168,0));
     padding: 30px;
+    font-size: 2vw;
 }
 .menu{
     list-style: none;
@@ -93,6 +94,15 @@ a{
     border: solid 3px black;
     box-shadow: 4px 4px 8px rgb(0, 0, 0);
 }   
+.bordureQuizz{
+    border: solid 5px black;
+    height: 100px;
+    margin: 100px;
+    border-radius: 20px;
+    background-color: rgb(255, 153, 0);
+    
+    
+}
 
 
 
