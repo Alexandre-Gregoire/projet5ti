@@ -17,6 +17,10 @@
     <header>
         <ul class="flex space-evenly ">
             <li class="menu"><a href="/">Home</a></li>
+            <?php if(isset($_SESSION['user'])) : ?>
+                    <li  class="menu"><a href="profil">Page profil</a></li>
+
+            <?php endif ?>
             <li  class="menu">
                 <?php if(isset($_SESSION['user'])) : ?>
                     <a href="deconnexion">Deconnexion</a>

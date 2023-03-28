@@ -2,12 +2,13 @@
 function createUser($pdo)
 {
     try{
-        $query = "insert into utilisateur (utilisateurPseudo, utilisateurMdp, utilisateurEmail) values (:nomUser, :mdpUser, :mailUser)"; //nom des colonnes utilisateur
+        $query = "insert into utilisateur (utilisateurPseudo, utilisateurMdp, utilisateurEmail, utilisateurRole) values (:nomUser, :mdpUser, :mailUser, :roleUser)"; //nom des colonnes utilisateur
         $newUser = $pdo->prepare($query);
         $newUser->execute([
             'nomUser' => $_POST["pseudo"],
-            'mdpUser' => $_POST["mail"],
-            'mailUser' => $_POST["password"],
+            'mailUser' => $_POST["mail"],
+            'mdpUser' => $_POST["password"],
+            'roleUser' => 'membre' 
             
         ]);
     }
@@ -29,6 +30,41 @@ function connectUser($pdo){
         if($user)
         {
             $_SESSION['user'] = $user;
+        }
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+function updateUser($pdo)
+{
+    try {
+        $query = "UPDATE utilisateur SET utilisateurPseudo = :utilisateurPseudo, utilisateurMdp = :utilisateurMdp, utilisateurEmail = :utilisateurEmail,WHERE utilisateurId = :id";
+        $updateUser = $pdo->prepare($query);
+        $updateUser->execute([
+            'utilisateurPseudo' => $_POST['pseudo'],
+            'utilisateurMdp' => $_POST['password'],
+            'utilisateurEmail' => $_POST['mail'],
+            'utilisateurId' => $_SESSION["user"]->utilisateurId
+        ]);
+        reloadSession($pdo);
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+function reloadSession($pdo)
+{
+    try {
+        $query = "select * from utilisateur where id = :id";
+        $chercheUser = $pdo->prepare($query);
+        $chercheUser->execute([
+            'id' => $_SESSION["user"]->id
+        ]);
+        $user=$chercheUser -> fetch();
+        if ($user) {
+            $_SESSION['user']=$user;
         }
     } catch (PDOException $e) {
         $message = $e->getMessage();

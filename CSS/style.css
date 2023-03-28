@@ -3,15 +3,15 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     height: calc(100vh - 16px);
-    font-size: 2vmax;
+    font-size: 2vw;
     font-family: cursive;
     text-align: center;
     margin: 0;
 }
 .mid h4{
     opacity: 25%;
-    font-size: 1.5vmax;
-    margin: 0 0 0.3vmax 0;
+    font-size: 1.5vw;
+    margin: 0 0 0.3vw 0;
 }
 .mid h1{
     margin: 0;
@@ -20,69 +20,60 @@ body{
     border: solid 1px black;
     background-color: white;
     border-radius: 20px;
-    padding: 0px 1vmax 0vmax 1vmax;
+    padding: 0px 1vw 0vw 1vw;
     font-family: cursive;
     vertical-align: middle;
-    margin: 8vmax 35vmax 8vmax 35vmax ;
+    margin: 8vw 35vw 8vw 35vw ;
 }
 input{
     border-radius: 10px;
-    font-size: 1.3vmax;
-    padding: 0.4vmax;
-    margin: 0 0 0.7vmax 0;
+    font-size: 1.3vw;
+    padding: 0.4vw;
+    margin: 0 0 0.7vw 0;
     font-family: cursive;
 }
-Button{
-    border-radius: 10px;
-    font-size: 1.5vmax;
-    padding: 0.3vmax 1vmax 0.5vmax 1vmax;
-    
-    font-family: cursive;
-    background: white;
-    margin-bottom: 0.1vmax;
-    
 
-    
-}
-button:hover{
+.button:hover{
     background-image:url(../Images/Background.png);
     background-size: cover;
-    margin-bottom: 0vmax;
-    padding: 0.4vmax 1.1vmax 0.6vmax 1.1vmax;
+
 }
-@media only screen and (max-width: 940px) {
+/*@media only screen and (max-width: 940px) {
     .mid{
         border-radius: 20px;
-        padding: 0px 1.8vmax 1.8vmax 1.8vmax;
-        margin-top: 13vmax;
+        padding: 0px 1.8vw 1.8vw 1.8vw;
+        margin-top: 13vw;
     }
     input{
-        font-size: 2vmax;
-        padding: 0.7vmax;
-        margin: 0 0 1vmax 0;
+        font-size: 2vw;
+        padding: 0.7vw;
+        margin: 0 0 1vw 0;
     }
     Button{
-        font-size: 3vmax;
-        padding: 0.6vmax 2vmax 1vmax 2vmax;
+        font-size: 3vw;
+        padding: 0.6vw 2vw 1vw 2vw;
     }
     button:hover{
-        padding: 0.7vmax 2.1vmax 1.1vmax 2.1vmax;
+        padding: 0.7vw 2.1vw 1.1vw 2.1vw;
     }
-  }
+  }*/
 .signUp{
     display: block;
-    font-size: 0.8vmax;
+    font-size: 0.8vw;
     margin: 0;
-    margin-bottom: 0.9vmax;
+    margin-bottom: 0.9vw;
 }
 footer{
-    background-color: orangered;
+    background: linear-gradient(rgb(196, 168, 168,0),rgb(255, 60, 0));
     height: 100px;
     margin: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 
 }
 header{
-    background-color: orange;
+    background: linear-gradient(rgb(255, 196, 0),rgb(196, 168, 168,0));
     padding: 30px;
 }
 .menu{
@@ -92,7 +83,16 @@ header{
 a{
     text-decoration: none;
     color: black;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 3px rgb(100, 60, 60,0);
+
 }
+.menu a:hover{
+    background-color: rgb(255, 166, 0);
+    border: solid 3px black;
+    box-shadow: 4px 4px 8px rgb(0, 0, 0);
+}   
 
 
 

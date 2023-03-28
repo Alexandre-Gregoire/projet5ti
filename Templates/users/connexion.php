@@ -9,6 +9,6 @@
                 <input required type="password" name="password" id="password" placeholder="password">
             </div>
             
-            <input type="submit" name="btnEnvoi" value="Login">
-            <a href="inscription" class="signUp">Sign upLogin
+            <input type="submit" name="btnEnvoi" value="Login" class="button">
+            <a href="inscription" class="signUp">Sign up </a>
 </form>

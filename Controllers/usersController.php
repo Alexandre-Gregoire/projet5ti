@@ -8,7 +8,7 @@ if($uri === "/" || $uri === "index.php"){
     if(isset($_POST['btnEnvoi']))
     {
         $messageErrorLogin = verifData();
-        if(!isset($messageErrorLogin)){
+        if(!$messageErrorLogin){
             createUser($pdo);
             //header('Location: connexion');
         }
@@ -20,8 +20,7 @@ if($uri === "/" || $uri === "index.php"){
 }elseif ($uri === "/connexion") {
     //var_dump($_SESSION);
     if(isset($_POST["btnEnvoi"])){
-        
-        //var_dump($_POST);
+        var_dump("toto");
         connectUser($pdo);
         header('location:/');
     }
@@ -31,15 +30,35 @@ if($uri === "/" || $uri === "index.php"){
 }elseif ($uri === "/deconnexion") {
     session_destroy();
     header('location:/');
+}elseif ($uri === "/modifyProfil") {
+    if(isset($_POST["btnEnvoi"])){
+        var_dump("cliqued");
+        updateUser($pdo);
+        //reloadSession($pdo);
+        header("location:/profil");
+    }
+    require_once "Templates/users/inscription.php";
 }
+
+
+
+
+
+
+
 function verifData() {
     foreach($_POST as $key => $value){
         if(empty(str_replace(" ","", $value))){
             $messageErrorLogin[$key] = "Votre " . $key . " est vide";
-        }elseif($key == "mail" || filter_var($value, FILTER_VALIDATE_EMAIL)){
+        }/*elseif($key == "mail" && filter_var($value, FILTER_VALIDATE_EMAIL)){
             $messageErrorLogin[$key] = "Votre adresse mail est invalide";
-        }
+        }*/
     }
-    return $messageErrorLogin;
+    if (isset($messageError)) {
+        return $messageError;
+    }
+    else {
+        return false;        
+    }
 
 }
