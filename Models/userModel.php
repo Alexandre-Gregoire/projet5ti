@@ -71,3 +71,29 @@ function reloadSession($pdo)
         die($message);
     }
 }
+
+
+
+function deleteUser($pdo)
+{
+    try {
+        $query = "update score set utilisateurId=null where utilisateurId = :id";
+        $updateScoreUser = $pdo->prepare($query);
+        $updateScoreUser->execute([
+            'id' => $_SESSION["user"]->utilisateurId
+        ]);
+        $query = "update quizz_utilisateur set utilisateurId=null where utilisateurId = :id";
+        $updateQuizzUser = $pdo->prepare($query);
+        $updateQuizzUser->execute([
+            'id' => $_SESSION["user"]->utilisateurId
+        ]);
+        $query = "delete from utilisateur where utilisateurId = :id";
+        $deleteUser = $pdo->prepare($query);
+        $deleteUser->execute([
+            'id' => $_SESSION["user"]->utilisateurId
+        ]);
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}

@@ -36,6 +36,11 @@ if ($uri === "/inscription") {
         header("location:/profil");
     }
     require_once "Templates/users/inscription.php";
+}elseif ($uri === "/deleteProfil") {
+
+    deleteUser($pdo);
+    session_destroy();
+    header('location:/inscription');
 }
 
 

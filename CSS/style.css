@@ -1,11 +1,15 @@
 body{
-    background-image: url('../Images/Background.png');
     background-repeat: no-repeat;
-    background-size: cover;
-    height: calc(100vh - 16px);
+    background-image: url(../Images/Background.png);
+    background-size: 200vmin;
+    height: 100%;
     font-family: cursive;
     margin: 0;
 }
+img{
+    width: 90px;
+}
+
 .mid h4{
     opacity: 25%;
     font-size: 1.5vw;
@@ -100,10 +104,22 @@ a{
     margin: 100px;
     border-radius: 20px;
     background-color: rgb(255, 153, 0);
-    
+    font-size: 25px;
+    padding: 0;
     
 }
+.ChoixTitre{
+    text-align: left;
+}
+.ChoixTheme{
+ border: 1px solid ;   
+}
+.ChoixDate{
 
+}
+.ChoixDif{
+    
+}
 
 
 

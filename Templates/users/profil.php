@@ -12,3 +12,4 @@
 </ol>
 
 <a href="/modifyProfil">Modifier votre profil</a>
+<a href="/deleteProfil">suprimer votre profil</a>

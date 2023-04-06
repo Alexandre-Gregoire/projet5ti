@@ -11,35 +11,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/flex.css">
     <link rel="stylesheet" href="CSS/style.css">
-    <title>Mon agence</title>
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+    <title>Quizz</title>
 </head>
 <body>
-    <header>
-        <ul class="flex space-evenly ">
-            <li class="menu"><a href="/">Home</a></li>
-            <?php if(isset($_SESSION['user'])) : ?>
-                    <li  class="menu"><a href="profil">Page profil</a></li>
-
-            <?php endif ?>
-            <li  class="menu">
+    <div class="background">
+        <header>
+            <ul class="flex space-evenly ">
+                <li class="menu"><a href="/">Home</a></li>
                 <?php if(isset($_SESSION['user'])) : ?>
-                    <a href="deconnexion">Deconnexion</a>
-                <?php else :?>
-                    <a href="connexion">Connexion</a>
+                        <li  class="menu"><a href="profil">Page profil</a></li>
+
                 <?php endif ?>
-            </li>
-            <li class="menu"><a href="inscription">inscription</a></li>
-        </ul>
-    </header>
-    <main>
-        
-        <?php 
-        require_once "Controllers/usersController.php";
-        require_once "Controllers/quizzController.php";
-        ?>
-    </main>
-    <footer>
-        
-    </footer>
+                <li  class="menu">
+                    <?php if(isset($_SESSION['user'])) : ?>
+                        <a href="deconnexion">Deconnexion</a>
+                    <?php else :?>
+                        <a href="connexion">Connexion</a>
+                    <?php endif ?>
+                </li>
+                <li class="menu"><a href="inscription">inscription</a></li>
+            </ul>
+        </header>
+        <main>
+            
+            <?php 
+            require_once "Controllers/usersController.php";
+            require_once "Controllers/quizzController.php";
+            ?>
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+    
 </body>
 </html>
