@@ -2,7 +2,7 @@
 function selectAllQuizzWithCategorie($pdo)
 {
     try {
-        $query = "select * from quizz join categorie on quizz.categorieId = categorie.categorieId";
+        $query = "SELECT quizz.quizzNom, categorie.categorieNom, categorie.categorieImage, quizz.quizzDifficulte, MAX(score.score) AS score FROM quizz JOIN categorie ON quizz.categorieId = categorie.categorieId JOIN score ON quizz.quizzId = score.quizzId GROUP BY quizz.quizzId";
         $selectAllQuizz = $pdo->prepare($query);
         $selectAllQuizz->execute();
         $quizzs = $selectAllQuizz->fetchAll();

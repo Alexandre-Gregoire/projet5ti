@@ -1,14 +1,19 @@
 <form action="" method="post">
-        <div class="mid">
-            <h1>Login</h1>   
-            <h4>Enter your credentials</h4>
+        <div class="connexion">
+            <h1>Connexion</h1>   
+            <h4>Entrer vos identifiants</h4>
             <div>
                 <input required type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
             </div>
             <div>
-                <input required type="password" name="password" id="password" placeholder="password">
+                <input required type="password" name="password" id="password" placeholder="Mot de passe">
+            </div>
+            <div>
+            <input class="buttonFormulaires" type="submit" name="btnEnvoi" value="Login" class="button">
+            </div>
+            <div>
+                <a href="inscription" class="signUp">Sign up </a>
             </div>
             
-            <input type="submit" name="btnEnvoi" value="Login" class="button">
-            <a href="inscription" class="signUp">Sign up </a>
+        </div>
 </form>

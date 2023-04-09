@@ -1,9 +1,9 @@
 <?php
     try {
         // chaine de connection : informations sur la base de données
-        $strConnection = "mysql:host=10.10.51.252;dbname=alexandre;port=3306";
+        $strConnection = "mysql:host=localhost;dbname=projetperso;port=3306";
         // nouvel objet pdo pour appliquer la connection  (chaine, username et password)
-        $pdo = new PDO($strConnection, "alexandre", "root", [
+        $pdo = new PDO($strConnection, "root", "root", [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
         ]);

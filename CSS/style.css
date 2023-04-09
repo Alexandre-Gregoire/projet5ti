@@ -1,123 +1,133 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap');
+
+
+
+
+
+
+
+
+
+
+
+
 body{
-    background-repeat: no-repeat;
-    background-image: url(../Images/Background.png);
-    background-size: 200vmin;
-    height: 100%;
-    font-family: cursive;
-    margin: 0;
-}
-img{
-    width: 90px;
+    background-color: #D8A603;
 }
 
-.mid h4{
-    opacity: 25%;
-    font-size: 1.5vw;
-    margin: 0 0 0.3vw 0;
+.bordureQuizz{
+    box-sizing: border-box;
+    width: 1200px;
+    height: 150px;
+    left: 126px;
+    top: 315px;
+    background: #003566;
+    border: 2px solid #020228;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    margin: 10px;
 }
-.mid h1{
+/* ------------- General ------------- */
+
+h3{  
+    font-family: 'Baloo Chettan 2';
+    font-size: 62px;
     margin: 0;
+    color: white;
 }
-.mid{
-    font-size: 2vw;
-    text-align: center;
-    border: solid 1px black;
-    background-color: white;
-    border-radius: 20px;
-    padding: 0px 1vw 0vw 1vw;
-    font-family: cursive;
-    vertical-align: middle;
-    margin: 8vw 35vw 8vw 35vw ;
+h4{
+    margin: 0;
+    font-size: 32px;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+}
+/* Formulaires*/
+h1{
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+}
+.buttonFormulaires{
+    width: 250px;
+    height: 50px;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+    font-weight: bold;
+    font-size: 32px;
+    background: #001D3D;
+    border-radius: 25px;
+}
+.buttonFormulaires:hover{
+    background: #FFD60A;
+    color: black;
 }
 input{
+    font-size: 28px;
+    margin: 5px;
     border-radius: 10px;
-    font-size: 1.3vw;
-    padding: 0.4vw;
-    margin: 0 0 0.7vw 0;
-    font-family: cursive;
+    border: solid black 3px;
 }
-
-.button:hover{
-    background-image:url(../Images/Background.png);
-    background-size: cover;
-
+.connexion{
+    color: white;
+    border-radius: 10px;
+    justify-content: space-around;
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #003566;
+    border: 2px solid #020228;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    text-align: center;
+    font-family: 'Baloo Chettan 2';
 }
-@media only screen and (max-width: 940px) {
-    .mid{
-        border-radius: 20px;
-        padding: 0px 1.8vw 1.8vw 1.8vw;
-        margin-top: 13vw;
-    }
-    input{
-        font-size: 2vw;
-        padding: 0.7vw;
-        margin: 0 0 1vw 0;
-    }
-    Button{
-        font-size: 3vw;
-        padding: 0.6vw 2vw 1vw 2vw;
-    }
-    button:hover{
-        padding: 0.7vw 2.1vw 1.1vw 2.1vw;
-    }
-  }
 .signUp{
-    display: block;
-    font-size: 0.8vw;
-    margin: 0;
-    margin-bottom: 0.9vw;
-}
-footer{
-    background: linear-gradient(rgb(196, 168, 168,0),rgb(255, 60, 0));
-    height: 100px;
-    margin: 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-
-}
-header{
-    background: linear-gradient(rgb(255, 196, 0),rgb(196, 168, 168,0));
-    padding: 30px;
-    font-size: 2vw;
-}
-.menu{
-    list-style: none;
-    
-}
-a{
     text-decoration: none;
+    color: white;
+}
+
+
+/* ------------- Voir tous les quizzs -------------*/
+.image{
+    margin: 20px;
+    width: 110px;
+    height: 110px;
+}
+.buttonCommencer{
+    width: 250px;
+    height: 50px;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+    font-weight: bold;
+    font-size: 32px;
+    background: #001D3D;
+    border-radius: 25px;
+    margin-top: 85px;
+    position: absolute;
+    margin-left: 475px;
+    margin-right: 100px;
+}
+.buttonCommencer:hover{
+    background: #FFD60A;
     color: black;
-    padding: 10px;
-    border-radius: 10px;
-    border: solid 3px rgb(100, 60, 60,0);
-
-}
-.menu a:hover{
-    background-color: rgb(255, 166, 0);
-    border: solid 3px black;
-    box-shadow: 4px 4px 8px rgb(0, 0, 0);
-}   
-.bordureQuizz{
-    border: solid 5px black;
-    height: 100px;
-    margin: 100px;
-    border-radius: 20px;
-    background-color: rgb(255, 153, 0);
-    font-size: 25px;
-    padding: 0;
-    
-}
-.ChoixTitre{
-    text-align: left;
-}
-.ChoixTheme{
- border: 1px solid ;   
-}
-.ChoixDate{
-
 }
 .ChoixDif{
+    margin-left: auto;
+    margin-right: 80px;
+}
+.star{
+    margin: auto 3px auto 3px;
+    width: 25px;
+    height: 25px;
+    
+}
+.ToutLesQuizz{
+    display: flex;
+    margin: auto;
+    justify-content:center;
+    align-items:center;
+    flex-wrap: wrap;
     
 }
 
