@@ -17,21 +17,36 @@
 <body>
     <div class="background">
         <header>
-            <ul class="flex space-evenly ">
-                <li class="menu"><a href="/">Home</a></li>
-                <?php if(isset($_SESSION['user'])) : ?>
-                        <li  class="menu"><a href="profil">Page profil</a></li>
+        
+            <div class="menu">   
+                <ul>
+                    <li><a href="/">Acceuil</a></li>
+                </ul>
+            </div>
+            <div class="right-menu flex ">
+                <ul>
+                    
+                    <li class="menu Deroulant">
+                        <a class="profilMenu">Profil</a>
+                        <div class="autreMenu">
+                            <?php if(isset($_SESSION['user'])) : ?>
+                                <a href="profil">Voir profil</a>
+                                <a href="deconnexion">Deconnexion</a>
+                                <a href="#">Mes quizzs</a>
+                            <?php else :?>
+                                <a href="connexion">Connexion</a>
+                                <a href="inscription">Inscription</a>
+                            <?php endif ?>
 
-                <?php endif ?>
-                <li  class="menu">
-                    <?php if(isset($_SESSION['user'])) : ?>
-                        <a href="deconnexion">Deconnexion</a>
-                    <?php else :?>
-                        <a href="connexion">Connexion</a>
-                    <?php endif ?>
-                </li>
-                <li class="menu"><a href="inscription">inscription</a></li>
-            </ul>
+                    </div>
+                    </li>
+                    <li><a href="creerQuizz">Créer un quizz</a></li>
+                </ul>
+            </div>
+            
+
+
+                    
         </header>
         <main>
             

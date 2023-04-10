@@ -31,6 +31,10 @@ function connectUser($pdo){
         {
             $_SESSION['user'] = $user;
         }
+        else{
+            $messageErrorLogin = "Votre pseudo ou mot de passe est invalide";
+            return $messageErrorLogin;
+        }
     } catch (PDOException $e) {
         $message = $e->getMessage();
         die($message);
@@ -39,13 +43,13 @@ function connectUser($pdo){
 function updateUser($pdo)
 {
     try {
-        $query = "UPDATE utilisateur SET utilisateurPseudo = :utilisateurPseudo, utilisateurMdp = :utilisateurMdp, utilisateurEmail = :utilisateurEmail,WHERE utilisateurId = :id";
+        $query = "UPDATE utilisateur SET utilisateurPseudo = :utilisateurPseudo, utilisateurMdp = :utilisateurMdp, utilisateurEmail = :utilisateurEmail WHERE utilisateurId = :id";
         $updateUser = $pdo->prepare($query);
         $updateUser->execute([
             'utilisateurPseudo' => $_POST['pseudo'],
             'utilisateurMdp' => $_POST['password'],
             'utilisateurEmail' => $_POST['mail'],
-            'utilisateurId' => $_SESSION["user"]->utilisateurId
+            'id' => $_SESSION["user"]->utilisateurId
         ]);
         reloadSession($pdo);
     } catch (PDOException $e) {
@@ -57,10 +61,10 @@ function updateUser($pdo)
 function reloadSession($pdo)
 {
     try {
-        $query = "select * from utilisateur where id = :id";
+        $query = "select * from utilisateur where utilisateurId = :id";
         $chercheUser = $pdo->prepare($query);
         $chercheUser->execute([
-            'id' => $_SESSION["user"]->id
+            'id' => $_SESSION["user"]->utilisateurId
         ]);
         $user=$chercheUser -> fetch();
         if ($user) {

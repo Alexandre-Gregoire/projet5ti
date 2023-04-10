@@ -1,12 +1,13 @@
 <form action="" method="post">
         <div class="connexion">
             <h1>Connexion</h1>   
-            <h4>Entrer vos identifiants</h4>
+            <h5>Entrer vos identifiants</h5>
             <div>
-                <input required type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
+                <input class="inputFormulaire" required type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
             </div>
             <div>
-                <input required type="password" name="password" id="password" placeholder="Mot de passe">
+                <input class="inputFormulaire" required type="password" name="password" id="password" placeholder="Mot de passe">
+                <?php if(isset($messageErrorLogin)) : ?> <p><?= $messageErrorLogin ?></p> <?php endif ?>
             </div>
             <div>
             <input class="buttonFormulaires" type="submit" name="btnEnvoi" value="Login" class="button">

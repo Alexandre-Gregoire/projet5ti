@@ -1,4 +1,4 @@
-<h1>Bienvenue</h1>
+<h1>Liste des quizzs : </h1>
 <div class="ToutLesQuizz">
 
 

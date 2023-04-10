@@ -6,7 +6,7 @@ function selectAllQuizzWithCategorie($pdo)
         $selectAllQuizz = $pdo->prepare($query);
         $selectAllQuizz->execute();
         $quizzs = $selectAllQuizz->fetchAll();
-        var_dump($quizzs);
+        //var_dump($quizzs);
         return $quizzs;
     } catch (PDOException $e) {
         $message = $e->getMessage();
