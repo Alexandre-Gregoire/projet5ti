@@ -14,3 +14,37 @@ function selectAllQuizzWithCategorie($pdo)
     }
 
 }
+
+function selectAllCategorie($pdo)
+{
+    try {
+        $query = "SELECT DISTINCT categorieNom, categorieImage FROM categorie;";
+        $selectAllCategorie = $pdo->prepare($query);
+        $selectAllCategorie->execute();
+        $categories = $selectAllCategorie->fetchAll();
+        //var_dump($quizzs);
+        return $categories;
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+
+}
+function createQuizz($pdo)
+{
+    try{
+        $query = "insert into utilisateur (utilisateurPseudo, utilisateurMdp, utilisateurEmail, utilisateurRole) values (:nomUser, :mdpUser, :mailUser, :roleUser)"; //nom des colonnes utilisateur
+        $newUser = $pdo->prepare($query);
+        $newUser->execute([
+            'nomUser' => $_POST["pseudo"],
+            'mailUser' => $_POST["mail"],
+            'mdpUser' => $_POST["password"],
+            'roleUser' => 'membre' 
+            
+        ]);
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}

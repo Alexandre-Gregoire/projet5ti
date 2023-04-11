@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="CSS/flex.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
-    <title>Quizz</title>
+    <title>IKUIZZ</title>
 </head>
 <body>
     <div class="background">

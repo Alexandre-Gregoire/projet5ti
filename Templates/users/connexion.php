@@ -3,6 +3,7 @@
             <h1>Connexion</h1>   
             <h5>Entrer vos identifiants</h5>
             <div>
+                
                 <input class="inputFormulaire" required type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
             </div>
             <div>
