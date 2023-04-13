@@ -23,11 +23,11 @@
                     <li><a href="/">Acceuil</a></li>
                 </ul>
             </div>
-            <div>
+            <!--<div>
                 <ul>
                     <img src="Images/iquizzSansFond.png" alt="">
                 </ul>
-            </div>
+            </div>-->
             <div class="right-menu flex ">
                 <ul>
                     

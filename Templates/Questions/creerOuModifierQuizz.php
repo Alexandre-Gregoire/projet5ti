@@ -15,23 +15,21 @@
                 </select>
             </div>
             <div>
+                <h1>Difficulté</h1>
+                <input type="number" id="difficulte" name="difficulte" min="1" max="10">
+            </div>
+            <div>
+                <input class="buttonFormulaires" type="submit" name="btnEnvoi" value="Créer" class="">
+            </div>
+            <!--<div>
                 <h1>Bonne reponse </h1>
                 <input class="inputFormulaire" required type="text" name="BonneReponse" id="BonneReponse" placeholder="Bonne reponse">
                 <h1>Mauvaise reponse</h1>
                 <input class="inputFormulaire" required type="text" name="MauvaiseReponse1" id="MauvaiseReponse1" placeholder="Mauvaise reponse n°1">
                 <input class="inputFormulaire" required type="text" name="MauvaiseReponse2" id="MauvaiseReponse2" placeholder="Mauvaise reponse n°2">
                 <input class="inputFormulaire" required type="text" name="MauvaiseReponse3" id="MauvaiseReponse3" placeholder="Mauvaise reponse n°3">
-            </div>
-            <div>
-                <h1>Difficulté</h1>
-                <input type="number" id="difficulte" name="difficulte" min="1" max="10">
-            </div>
-            <div>
-            <input class="buttonFormulaires" type="submit" name="btnEnvoi" value="Login" class="button">
-            </div>
-            <div>
-                <a href="inscription" class="signUp">Sign up </a>
-            </div>
+            </div> -->
+
             
         </div>
 </form>

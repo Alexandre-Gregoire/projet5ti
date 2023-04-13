@@ -12,8 +12,8 @@
                 <h4><?= $quizz->categorieNom ?></h4>
                 
             </div>
-
-            <input type="submit" name="btnEnvoi" value="Commencer" class="buttonCommencer">
+            
+            <a href="quizz?quizzId=<?= $quizz->quizzId ?>" class="buttonCommencer">Commencer</a>
 
 
             <div class="ChoixDif">
