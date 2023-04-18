@@ -20,7 +20,7 @@
         
             <div class="menu">   
                 <ul>
-                    <li><a href="/">Acceuil</a></li>
+                    <li><a href="/">Accueil</a></li>
                 </ul>
             </div>
             <!--<div>

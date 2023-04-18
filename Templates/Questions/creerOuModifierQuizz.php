@@ -7,20 +7,23 @@
                 <h1>Nom du quizz</h1>
                 <input class="inputFormulaire" required type="text" name="NomQuizz" id="pseudo" placeholder="Nom">
                 <h1>Categorie du quizz</h1>
-                <select name="" id="">
+                <select name="categorieQuizz" id="categorieQuizz">
                     <?php foreach($categories as $categorie) : //Il faut d'abord creer une page avec quizz et puis ensuite faire les questions et demander a chaque fois si il veut ajouter une question ou terminer le quizz?>
-                        <option value="<?= $categorie->categorieNom ?>"><?= $categorie->categorieNom ?></option>
+                        <option value="<?= $categorie->categorieId ?>"><?= $categorie->categorieNom ?></option>
                     <?php endforeach?>
-
                 </select>
             </div>
             <div>
                 <h1>Difficulté</h1>
-                <input type="number" id="difficulte" name="difficulte" min="1" max="10">
+                <input type="number" required id="difficulte" name="difficulte" min="1" max="10">
             </div>
             <div>
-                <input class="buttonFormulaires" type="submit" name="btnEnvoi" value="Créer" class="">
+                <input class="buttonFormulaires" required type="submit" name="btnEnvoi" value="Créer" class="">
             </div>
+
+
+
+
             <!--<div>
                 <h1>Bonne reponse </h1>
                 <input class="inputFormulaire" required type="text" name="BonneReponse" id="BonneReponse" placeholder="Bonne reponse">

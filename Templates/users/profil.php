@@ -1,15 +1,16 @@
-<h1>Votre page profil</h1>
-<ol>
-    <div>
-        <li>Pseudo</li>
-        <p><?= $_SESSION["user"]->utilisateurPseudo ?></p>
-    </div>
-    <div>
-        <li>Mail</li>
-        <p><?= $_SESSION["user"]->utilisateurEmail ?></p>
-    </div>
+
+
+    <h1>Profil Utilisateur</h1>
+    <h2>Informations de l'utilisateur</h2>
+    <ul>
+        <li><strong>Pseudo :</strong> <?= $_SESSION["user"]->utilisateurPseudo ?></li>
+        <li><strong>Mot de passe :</strong> *********</li>
+        <li><strong>Email :</strong> <?= $_SESSION["user"]->utilisateurEmail ?></li>
+        <li><strong>Rôle :</strong> <?= $_SESSION["user"]->utilisateurRole ?></li>
+    </ul>
+
     
-</ol>
+
 
 <a href="/modifyProfil">Modifier votre profil</a>
 <a href="/deleteProfil">suprimer votre profil</a>
