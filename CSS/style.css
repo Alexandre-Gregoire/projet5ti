@@ -154,6 +154,20 @@ h1{
     border-radius: 15px;
     border: solid black 3px;
 }
+.inputFormulaireSelect{
+    padding: 5px;
+    font-size: 28px;
+
+    border-radius: 15px;
+    border: solid black 3px;
+}
+.inputFormulaireNumber{
+    padding: 5px;
+    font-size: 28px;
+    margin: 5px;
+    border-radius: 15px;
+    border: solid black 3px;
+}
 .connexion{
     color: white;
     border-radius: 10px;

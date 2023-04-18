@@ -50,6 +50,12 @@ function createQuizz($pdo)
     }
 }
 
+
+
+
+
+
+
 function selectQuizz($pdo)
 {
     try{
