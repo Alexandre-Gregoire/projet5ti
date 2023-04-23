@@ -9,16 +9,25 @@ if($uri === "/" || $uri === "index.php"){
     {
         createQuizz($pdo);
         $_SESSION['quizzId'] = $pdo->lastInsertId();
-        header('Location: createQuestion');
+        var_dump($_SESSION);
+        createScore($pdo);
+        header('Location: creerOuModifierQuestion');
     }
     require_once "Templates/Questions/creerOuModifierQuizz.php";
-}elseif ($uri === "/creerQuestion") {
-    createBonneReponse($pdo);
-    createQuestion($pdo);
-
+}elseif ($uri === "/creerOuModifierQuestion") {
+    /*createBonneReponse($pdo);
+    createQuestion($pdo);*/
+    require_once "Templates/Questions/creerOuModifierQuestion.php";
 
 
 }elseif (str_contains($uri,'quizz?quizzId=')){
-    $quizz = selectQuizz($pdo);
+    $quizz = selectQuizzQuestion($pdo);
+    
+    $quizzMauvaiseReponses = selectQuizzMauvaiseReponse($pdo);
     require_once "Templates/Questions/voirUnQuizz.php";
+    if(isset($_POST['btnEnvoi']))
+    {
+        createUser($pdo);
+        header('Location: connexion');
+    }
 }

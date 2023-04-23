@@ -49,21 +49,33 @@ function createQuizz($pdo)
         die($message);
     }
 }
-
-
-
-
-
-
-
-function selectQuizz($pdo)
+function createScore($pdo)
 {
     try{
-        $query = "SELECT question.questionText as question, bonne_reponse.bonneReponseText as bonneReponse, mauvaise_reponse.mauvaiseReponseText as mauvaiseReponse, quizz.quizzNom, utilisateur.utilisateurPseudo as createur, quizz.quizzDateCreation FROM quizz_question INNER JOIN question ON quizz_question.questionId = question.questionId LEFT JOIN bonne_reponse ON question.bonneReponseId = bonne_reponse.bonneReponseId LEFT JOIN mauvaise_reponse ON question.questionId = mauvaise_reponse.questionId INNER JOIN quizz ON quizz_question.quizzId = quizz.quizzId INNER JOIN quizz_utilisateur ON quizz.quizzId = quizz_utilisateur.quizzId INNER JOIN utilisateur ON quizz_utilisateur.utilisateurId = utilisateur.utilisateurId WHERE quizz_question.quizzId = :quizzId ORDER BY quizz_question.quizzQuestionId;"; //nom des colonnes utilisateur
+        $query = "INSERT INTO score (score,date,quizzId,utilisateurId)  VALUES (null,now(),:quizzId,null);"; //nom des colonnes utilisateur
+        $newUser = $pdo->prepare($query);
+        $newUser->execute([
+            'quizzId' => $_SESSION["quizzId"]
+        ]);
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+
+
+
+
+
+function selectQuizzQuestion($pdo)
+{
+    try{
+        $query = "SELECT bonne_reponse.*, question.* FROM bonne_reponse INNER JOIN question ON bonne_reponse.bonneReponseId = question.bonneReponseId INNER JOIN quizz ON question.quizzId = quizz.quizzId WHERE quizz.quizzId = :quizzId;"; //nom des colonnes utilisateur
         $selectQuizz = $pdo->prepare($query);
         $selectQuizz->execute([
             'quizzId' => $_GET["quizzId"],
-            
         ]);
         $quizz = $selectQuizz->fetchAll();
         var_dump($quizz);
@@ -75,18 +87,20 @@ function selectQuizz($pdo)
     }
 }
 
-function selectQuizzQuestions($pdo)
+
+
+function selectQuizzMauvaiseReponse($pdo)
 {
     try{
-        $query = "SELECT question.questionText as question, bonne_reponse.bonneReponseText as bonneReponse, mauvaise_reponse.mauvaiseReponseText as mauvaiseReponse, quizz.quizzNom, utilisateur.utilisateurPseudo as createur, quizz.quizzDateCreation FROM quizz_question INNER JOIN question ON quizz_question.questionId = question.questionId LEFT JOIN bonne_reponse ON question.bonneReponseId = bonne_reponse.bonneReponseId LEFT JOIN mauvaise_reponse ON question.questionId = mauvaise_reponse.questionId INNER JOIN quizz ON quizz_question.quizzId = quizz.quizzId INNER JOIN quizz_utilisateur ON quizz.quizzId = quizz_utilisateur.quizzId INNER JOIN utilisateur ON quizz_utilisateur.utilisateurId = utilisateur.utilisateurId WHERE quizz_question.quizzId = :quizzId ORDER BY quizz_question.quizzQuestionId;"; //nom des colonnes utilisateur
+        $query = "SELECT * FROM mauvaise_reponse WHERE questionId IN (SELECT questionId FROM question WHERE quizzId = :quizzId);";
         $selectQuizz = $pdo->prepare($query);
         $selectQuizz->execute([
             'quizzId' => $_GET["quizzId"],
             
         ]);
-        $quizz = $selectQuizz->fetchAll();
-        var_dump($quizz);
-        return $quizz;
+        $quizzMauvaiseReponse = $selectQuizz->fetchAll();
+        var_dump($quizzMauvaiseReponse);
+        return $quizzMauvaiseReponse;
     }
     catch(PDOException $e){
         $message = $e->getMessage();

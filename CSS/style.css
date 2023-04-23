@@ -127,7 +127,86 @@ h5{
     color: white;
     font-family: 'Baloo Chettan 2';
 }
+/* creer quizz */
+.creerQuizz{
+    display: flex;
+}
+.affichageCreation{
+    font-size: 20px;
+}
+/* Questions */
+.inputRadio {
+    display: none;
+  }
+.TitreQuestion{
+    background-color: #001D3D;
+    width: fit-content;
+    margin: 40px;
+    padding: 0 10px 0 10px ;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 40px;
+    font-family: 'Baloo Chettan 2';
+}
+.questionHorsTitre{
+    display: flex;
+    justify-content: space-evenly;
+}
+fieldset{
+    border-radius: 10px;
+    border: #001D3D solid 5px;
+    background-color: #003566;
+    margin: 30px 10px 30px 10px;
+}
+.inputRadio + label{
+    display: block;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+    font-weight: bold;
+    font-size: 32px;
+    background: #001D3D;
+    border-radius: 25px;
+    width: 22vw;
+    padding: 5px;
+    border: 3px #020228 solid;
+    text-align: center;
+    margin: 3px;
+}
+
+
+
+.inputRadio:checked + label{
+    background: #FFD60A;
+    color: black;
+    border: 3px #020228 solid;
+
+}
+.inputRadio:hover + label{
+    padding: 8px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.ValiderQuestions{
+    display: flex;
+    justify-content: space-around;
+}
+.ValiderQuestions .buttonValider{
+    margin: 50px;
+    padding: 25px 50px;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+    font-weight: bold;
+    font-size: 60px;
+    background: #001D3D;
+    border-radius: 25px;
+}
+.buttonValider:hover{
+    background: #FFD60A;
+    color: black;
+}
 /* Formulaires*/
+
 h1{
     font-size: 40px;
     margin: 0;
