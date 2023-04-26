@@ -89,17 +89,16 @@ function selectQuizzQuestion($pdo)
 
 
 
-function selectQuizzMauvaiseReponse($pdo)
+function selectQuizzMauvaiseReponse($pdo,$questionId)
 {
     try{
-        $query = "SELECT * FROM mauvaise_reponse WHERE questionId IN (SELECT questionId FROM question WHERE quizzId = :quizzId);";
+        $query = "SELECT * FROM mauvaise_reponse WHERE questionId IN (SELECT questionId FROM question WHERE questionId = :questionId);";
         $selectQuizz = $pdo->prepare($query);
         $selectQuizz->execute([
-            'quizzId' => $_GET["quizzId"],
+            'questionId' => $questionId
             
         ]);
         $quizzMauvaiseReponse = $selectQuizz->fetchAll();
-        var_dump($quizzMauvaiseReponse);
         return $quizzMauvaiseReponse;
     }
     catch(PDOException $e){

@@ -1,30 +1,17 @@
 
-<?php 
-    $counterNbQuestion = 1; 
-    $nbReponse = 1;
-    $counterNbMauvaiseReponse = 1;
-?>
-<?php foreach($quizz as $quizz) : ?>
+<?php foreach($quizzs as $quizz) : ?>
     <?php 
+        
 
-        $reponses = [$quizz->bonneReponseText];
-        foreach($quizzMauvaiseReponses as $quizzMauvaiseReponse) {
-            if($quizz->questionId == $quizzMauvaiseReponse->questionId) {
-                array_push($reponses, $quizzMauvaiseReponse->mauvaiseReponseText);
-            }
-        }
-
-        shuffle($reponses);
-
-        $bonneReponseIndex = array_search($quizz->bonneReponseText, $reponses);
+        
     ?>
     <fieldset>
         <legend class="TitreQuestion"><?= $quizz->questionText ?></legend>
         <div class="question">
             <div class="questionHorsTitre">
-                <?php foreach($reponses as $index => $reponse) : ?>
+                <?php foreach(recupMauvaiseReponsesShuffle($quizz,$pdo) as $index => $reponse) : ?>
                     <div>
-                        <input type="radio" class="inputRadio" name="question<?= $counterNbQuestion ?>" id="Reponse<?= $index ?>-<?= $counterNbQuestion ?>" ?>
+                        <input type="radio" class="inputRadio" name="Reponse<?= $counterNbQuestion ?>" id="Reponse<?= $index ?>-<?= $counterNbQuestion ?>">
                         <label for="Reponse<?= $index ?>-<?= $counterNbQuestion ?>"><?= $reponse ?></label>
                     </div>
                 <?php endforeach ?>

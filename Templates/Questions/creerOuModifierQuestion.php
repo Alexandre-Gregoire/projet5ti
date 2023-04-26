@@ -3,17 +3,12 @@
     <h1>veuillez d'abord créer le quizz</h1>
     <?php else : ?>
     <form action="" method="post">
+        <div class="affichageTitreQuestion">
+            <h1>Titre du quizz</h1>
+            <h2 class="affichageCreation">sssssssss</h2>
+        </div>
         <div class="creerQuizz">
-            <div class="connexion">
-                <h1>Titre du quizz</h1>
-                <h2 class="affichageCreation">wesh</h2>
-
-
-
-                
-                ddzdzbzduyezffeznnuids
-            </div>
-            <div class="connexion">
+            <div class="creationQuestion">
                 <h1>Créer Question</h1>
                 <div>
                     <h1>Bonne reponse </h1>
@@ -27,8 +22,46 @@
                 <div>
                     <input class="buttonFormulaires" required type="submit" name="btnEnvoi" value="Créer" class="">
                 </div>
-                
             </div>
+            <div class="containsAffichageQuestion">
+                <div class="affichageQuestion">
+                    <div class="questionEtButton">
+                        <h1>Quel est la capitale de la belgique ?</h1> 
+                        <input class="buttonModifierQuestion" required type="submit" name="btnEnvoi" value="Modifier" class="">
+                    </div>
+                    <div class="flex justify-content-space-around">
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                    </div>
+                </div>
+                <div class="affichageQuestion">
+                    <div class="questionEtButton">
+                        <h1>Quel est la capitale de la belgique ?</h1> 
+                        <input class="buttonModifierQuestion" required type="submit" name="btnEnvoi" value="Modifier" class="">
+                    </div>
+                    <div class="flex justify-content-space-around">
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                    </div>
+                </div>
+                <div class="affichageQuestion">
+                    <div class="questionEtButton">
+                        <h1>Quel est la capitale de la belgique ?</h1> 
+                        <input class="buttonModifierQuestion" required type="submit" name="btnEnvoi" value="Modifier" class="">
+                    </div>
+                    <div class="flex justify-content-space-around">
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                    </div>
+                </div>
+            </div>
+            
         </div>
         
         

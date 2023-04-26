@@ -127,13 +127,96 @@ h5{
     color: white;
     font-family: 'Baloo Chettan 2';
 }
-/* creer quizz */
+/* ------------- creer quizz ------------- */
 .creerQuizz{
     display: flex;
 }
 .affichageCreation{
     font-size: 20px;
 }
+.creationQuestion{
+    color: white;
+    border-radius: 10px;
+    justify-content: space-around;
+    width: 25%;
+    height: fit-content;
+    margin: 5% auto;
+    padding: 20px 20px 20px 20px;
+    background-color: #003566;
+    border: 2px solid #020228;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    text-align: center;
+    font-family: 'Baloo Chettan 2';
+}
+.containsAffichageQuestion{
+    height: fit-content;
+    width: 55%;
+    margin: 5% auto;
+}
+.affichageQuestion{
+    color: white;
+    border-radius: 10px;
+    justify-content: space-around;
+    margin: 0 0 2% 0;
+    padding: 1%;
+    background-color: #003566;
+    border: 2px solid #020228;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    text-align: center;
+    font-family: 'Baloo Chettan 2';
+}
+.questionEtButton{
+    display: flex;
+    justify-content: space-between;
+}
+.affichageQuestionCreation{
+    display: block;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+    font-weight: bold;
+    font-size: 20px;
+    background: #001D3D;
+    border-radius: 25px;
+    width: 20%;
+    padding: 5px;
+    border: 3px #020228 solid;
+    text-align: center;
+    margin: 3px;
+}
+.buttonModifierQuestion{
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+    font-weight: bold;
+    font-size: 30px;
+    background: #001D3D;
+    border-radius: 25px;
+    border: 3px solid black;
+}
+.buttonModifierQuestion:hover{
+    background: #FFD60A;
+    color: black;
+}
+.affichageTitreQuestion{
+    color: white;
+    border-radius: 10px;
+    justify-content: space-around;
+    width: 90%;
+    height: fit-content;
+    margin: 20px auto;
+    padding: 20px 20px 20px 20px;
+    background-color: #003566;
+    border: 2px solid #020228;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    text-align: center;
+    font-family: 'Baloo Chettan 2';
+}
+
 /* Questions */
 .inputRadio {
     display: none;

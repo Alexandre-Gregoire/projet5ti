@@ -21,13 +21,25 @@ if($uri === "/" || $uri === "index.php"){
 
 
 }elseif (str_contains($uri,'quizz?quizzId=')){
-    $quizz = selectQuizzQuestion($pdo);
-    
-    $quizzMauvaiseReponses = selectQuizzMauvaiseReponse($pdo);
+    $quizzs = selectQuizzQuestion($pdo);
+    $counterNbQuestion = 1; 
+    $nbReponse = 1;
+    $counterNbMauvaiseReponse = 1;
     require_once "Templates/Questions/voirUnQuizz.php";
-    if(isset($_POST['btnEnvoi']))
+    /*if(isset($_POST['btnEnvoi']))
     {
         createUser($pdo);
         header('Location: connexion');
-    }
+    }*/
+}
+
+
+function recupMauvaiseReponsesShuffle($quizz,$pdo) {
+        $reponses = [$quizz->bonneReponseText];
+        $quizzMauvaiseReponses = selectQuizzMauvaiseReponse($pdo,$quizz -> questionId);
+        foreach($quizzMauvaiseReponses as $quizzMauvaiseReponse) {
+            array_push($reponses, $quizzMauvaiseReponse->mauvaiseReponseText);
+        }
+        shuffle($reponses);
+        return $reponses;
 }
