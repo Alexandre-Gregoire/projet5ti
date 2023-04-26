@@ -30,10 +30,10 @@
                         <input class="buttonModifierQuestion" required type="submit" name="btnEnvoi" value="Modifier" class="">
                     </div>
                     <div class="flex justify-content-space-around">
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreationBonne">sssssssss</h2>
+                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
+                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
+                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
                     </div>
                 </div>
                 <div class="affichageQuestion">
@@ -42,10 +42,10 @@
                         <input class="buttonModifierQuestion" required type="submit" name="btnEnvoi" value="Modifier" class="">
                     </div>
                     <div class="flex justify-content-space-around">
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreationBonne"></h2>
+                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
+                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
+                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
                     </div>
                 </div>
                 <div class="affichageQuestion">
@@ -54,10 +54,10 @@
                         <input class="buttonModifierQuestion" required type="submit" name="btnEnvoi" value="Modifier" class="">
                     </div>
                     <div class="flex justify-content-space-around">
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
-                        <h2 class="affichageQuestionCreation">sssssssss</h2>
+                        <h2 class="affichageQuestionCreationBonne">sssssssss</h2>
+                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
+                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
+                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
                     </div>
                 </div>
             </div>

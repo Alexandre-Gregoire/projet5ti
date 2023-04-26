@@ -171,13 +171,27 @@ h5{
     display: flex;
     justify-content: space-between;
 }
-.affichageQuestionCreation{
+.affichageQuestionCreationBonne{
     display: block;
     color: white;
     font-family: 'Baloo Chettan 2';
     font-weight: bold;
     font-size: 20px;
-    background: #001D3D;
+    background: #00a708;
+    border-radius: 25px;
+    width: 20%;
+    padding: 5px;
+    border: 3px #020228 solid;
+    text-align: center;
+    margin: 3px;
+}
+.affichageQuestionCreationFausse{
+    display: block;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+    font-weight: bold;
+    font-size: 20px;
+    background: #810101;
     border-radius: 25px;
     width: 20%;
     padding: 5px;
@@ -217,7 +231,7 @@ h5{
     font-family: 'Baloo Chettan 2';
 }
 
-/* Questions */
+/* ------------- Questions ------------- */
 .inputRadio {
     display: none;
   }
