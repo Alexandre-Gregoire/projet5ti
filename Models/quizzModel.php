@@ -52,10 +52,10 @@ function createQuizz($pdo)
 function createScore($pdo)
 {
     try{
-        $query = "INSERT INTO score (score,date,quizzId,utilisateurId)  VALUES (null,now(),:quizzId,null);"; //nom des colonnes utilisateur
+        $query = "INSERT INTO score (score,date,quizzId,utilisateurId)  VALUES ('0',now(),:quizzId,null);"; //nom des colonnes utilisateur
         $newUser = $pdo->prepare($query);
         $newUser->execute([
-            'quizzId' => $_SESSION["quizzId"] -> quizzId
+            'quizzId' => $_SESSION["quizzId"]
         ]);
     }
     catch(PDOException $e){

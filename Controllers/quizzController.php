@@ -19,7 +19,22 @@ if($uri === "/" || $uri === "index.php"){
     createQuestion($pdo);*/
     $quizzInfo = selectQuizzInfo($pdo);
     require_once "Templates/Questions/creerOuModifierQuestion.php";
-
+    if(isset($_POST['btnEnvoi']))
+    {
+        
+        createBonneReponse($pdo);
+        createQuestion($pdo);
+        foreach($_POST as $key => $value){
+            if(!empty(str_replace(" ","", $value))){
+               $counterNbMauvaiseReponse ++; 
+                
+            }
+        }
+        $counterNbMauvaiseReponse  -= 2;
+        for ($i=0; $i < $counterNbMauvaiseReponse; $i++) { 
+            createMauvaiseReponse($pdo,$i);
+        }
+    }
 
 }elseif (str_contains($uri,'quizz?quizzId=')){
     $quizzs = selectQuizzQuestion($pdo);
