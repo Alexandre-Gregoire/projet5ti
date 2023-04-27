@@ -1,5 +1,6 @@
 <?php
 require_once("Models/quizzModel.php");
+require_once("Models/questionsModel.php");
 if($uri === "/" || $uri === "index.php"){
     $quizzs = selectAllQuizzWithCategorie($pdo);
     require_once "Templates/Questions/voirTousLesQuizz.php";
@@ -9,7 +10,6 @@ if($uri === "/" || $uri === "index.php"){
     {
         createQuizz($pdo);
         $_SESSION['quizzId'] = $pdo->lastInsertId();
-        var_dump($_SESSION);
         createScore($pdo);
         header('Location: creerOuModifierQuestion');
     }
@@ -17,6 +17,7 @@ if($uri === "/" || $uri === "index.php"){
 }elseif ($uri === "/creerOuModifierQuestion") {
     /*createBonneReponse($pdo);
     createQuestion($pdo);*/
+    $quizzInfo = selectQuizzInfo($pdo);
     require_once "Templates/Questions/creerOuModifierQuestion.php";
 
 

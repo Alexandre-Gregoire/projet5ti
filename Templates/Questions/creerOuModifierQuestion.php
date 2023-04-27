@@ -3,13 +3,41 @@
     <h1>veuillez d'abord créer le quizz</h1>
     <?php else : ?>
     <form action="" method="post">
-        <div class="affichageTitreQuestion">
-            <h1>Titre du quizz</h1>
-            <h2 class="affichageCreation">sssssssss</h2>
+        <div class = "affichageTitreQuestion flex ">
+            <div> 
+                <img class="image" src="<?= $quizzInfo->categorieImage ?>" alt="">
+            </div>
+            <div class="ChoixTitre"> 
+                <h3><?= $quizzInfo->quizzNom ?></h3>
+                <h4><?= $quizzInfo->categorieNom ?></h4>
+                
+            </div>
+            <div class="divButtonModifierQuizz">
+                <a href="" class="buttonModifierQuizz">Modifier</a>
+            </div>
+            
+
+
+            <div class="ChoixDif">
+                <div class="flex">
+                    <h4>Difficultée : </h4>
+
+                    <?php for($i = 1; $i <= $quizzInfo->quizzDifficulte/2; $i++) : ?><img class="star" src="Images/etoile.png" alt=""><?php endfor ?></p>
+                    <?php if ($quizzInfo->quizzDifficulte%2 != 0) : ?><img class="star" src="Images/demiEtoile.png" alt=""><?php endif ?>
+                </div>   
+                
+                
+            </div>
+            
+            <div class="ChoixDate">
+                
+            </div>
+            <p></p>
         </div>
         <div class="creerQuizz">
             <div class="creationQuestion">
                 <h1>Créer Question</h1>
+                <input class="inputFormulaire" required type="text" name="question" id="question" placeholder="Question">
                 <div>
                     <h1>Bonne reponse </h1>
                     <input class="inputFormulaire" required type="text" name="BonneReponse" id="BonneReponse" placeholder="Bonne reponse">
@@ -36,30 +64,7 @@
                         <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
                     </div>
                 </div>
-                <div class="affichageQuestion">
-                    <div class="questionEtButton">
-                        <h1>Quel est la capitale de la belgique ?</h1> 
-                        <input class="buttonModifierQuestion" required type="submit" name="btnEnvoi" value="Modifier" class="">
-                    </div>
-                    <div class="flex justify-content-space-around">
-                        <h2 class="affichageQuestionCreationBonne"></h2>
-                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
-                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
-                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
-                    </div>
-                </div>
-                <div class="affichageQuestion">
-                    <div class="questionEtButton">
-                        <h1>Quel est la capitale de la belgique ?</h1> 
-                        <input class="buttonModifierQuestion" required type="submit" name="btnEnvoi" value="Modifier" class="">
-                    </div>
-                    <div class="flex justify-content-space-around">
-                        <h2 class="affichageQuestionCreationBonne">sssssssss</h2>
-                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
-                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
-                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
-                    </div>
-                </div>
+                
             </div>
             
         </div>

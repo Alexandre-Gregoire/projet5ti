@@ -6,7 +6,7 @@ function selectAllQuizzWithCategorie($pdo)
         $selectAllQuizz = $pdo->prepare($query);
         $selectAllQuizz->execute();
         $quizzs = $selectAllQuizz->fetchAll();
-        var_dump($quizzs);
+
         return $quizzs;
     } catch (PDOException $e) {
         $message = $e->getMessage();
@@ -55,7 +55,7 @@ function createScore($pdo)
         $query = "INSERT INTO score (score,date,quizzId,utilisateurId)  VALUES (null,now(),:quizzId,null);"; //nom des colonnes utilisateur
         $newUser = $pdo->prepare($query);
         $newUser->execute([
-            'quizzId' => $_SESSION["quizzId"]
+            'quizzId' => $_SESSION["quizzId"] -> quizzId
         ]);
     }
     catch(PDOException $e){
@@ -78,7 +78,6 @@ function selectQuizzQuestion($pdo)
             'quizzId' => $_GET["quizzId"],
         ]);
         $quizz = $selectQuizz->fetchAll();
-        var_dump($quizz);
         return $quizz;
     }
     catch(PDOException $e){

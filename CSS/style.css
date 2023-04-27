@@ -230,6 +230,38 @@ h5{
     text-align: center;
     font-family: 'Baloo Chettan 2';
 }
+.buttonModifierQuizz{
+    padding: 5px 20px 5px 20px;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+    font-weight: bold;
+    font-size: 32px;
+    background: #001D3D;
+    border-radius: 25px;
+    border: 2px solid black;
+
+    text-align: center;
+}
+.buttonModifierQuizz:hover{
+    background: #FFD60A;
+    color: black;
+    border-radius: 25px;
+}
+.divButtonModifierQuizz{
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    padding-left: 200px;
+}
+.ChoixTitreCreationQuestion{
+    text-align: center;
+}
+.ChoixTitreCreationQuestion h3{
+    display: flex;
+}
+.ChoixTitreCreationQuestion h4{
+    display: flex;
+}
 
 /* ------------- Questions ------------- */
 .inputRadio {
