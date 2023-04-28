@@ -2,7 +2,7 @@
 function createBonneReponse($pdo)
 {
     try{
-        $query = "INSERT INTO Bonne_Reponse (bonneReponseText)  VALUES (bonneReponseText);"; 
+        $query = "INSERT INTO Bonne_Reponse (bonneReponseText)  VALUES (:bonneReponseText);"; 
         $newBonneReponse = $pdo->prepare($query);
         $newBonneReponse->execute([
             'bonneReponseText' => $_POST['BonneReponse'],
@@ -17,11 +17,12 @@ function createBonneReponse($pdo)
 function createQuestion($pdo)
 {
     try{
-        $query = "INSERT INTO question (questionText,bonneReponseId)  VALUES (:questionText,:bonneReponseId);"; 
+        $query = "INSERT INTO question (questionText,bonneReponseId,quizzId)  VALUES (:questionText,:bonneReponseId,:quizzId);"; 
         $newQuestion = $pdo->prepare($query);
         $newQuestion->execute([
             'questionText' => $_POST['question'],
-            'bonneReponseId' => $pdo->lastInsertId()
+            'bonneReponseId' => $pdo->lastInsertId(),
+            'quizzId' => $_SESSION["quizzId"]
 
         ]);
     }
@@ -31,14 +32,16 @@ function createQuestion($pdo)
     }
 }
 
-function createMauvaiseReponse($pdo,$counterMauvaiseReponse)
-{
+function createMauvaiseReponse($pdo,$counterMauvaiseReponse,$questionId)
+{   
+    var_dump($counterMauvaiseReponse);
+    $NomMauvaiseReponse = "MauvaiseReponse".$counterMauvaiseReponse;
     try{
         $query = "insert into mauvaise_reponse (mauvaiseReponseText,questionId) values (:mauvaiseReponseText,:questionId);"; 
         $newMauvaiseReponse = $pdo->prepare($query);
         $newMauvaiseReponse->execute([
-            'mauvaiseReponseText' => $_POST['MauvaiseReponse'.$counterMauvaiseReponse],
-            'questionId' => $pdo->lastInsertId(),
+            'mauvaiseReponseText' => $_POST[$NomMauvaiseReponse],
+            'questionId' => $questionId,
 
         ]);
     }

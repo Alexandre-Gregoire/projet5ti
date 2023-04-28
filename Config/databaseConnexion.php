@@ -1,6 +1,6 @@
 <?php
     //----- Maison -----
-    /*try {
+    try {
         // chaine de connection : informations sur la base de données
         $strConnection = "mysql:host=localhost;dbname=projetperso;port=3306";
         // nouvel objet pdo pour appliquer la connection  (chaine, username et password)
@@ -13,7 +13,7 @@
         $msg = 'ERREUR PDO dans ' .  $e->getMessage();
         // envoi du message dans la sortie, ici ce sera la page de l'utilisateur
         die($msg);
-    }*/
+    }
     //----- ecole -----
     /*
     try {
@@ -29,7 +29,7 @@
         $msg = 'ERREUR PDO dans ' .  $e->getMessage();
         // envoi du message dans la sortie, ici ce sera la page de l'utilisateur
         die($msg);
-    }*/
+    }*//*
     try {
         // chaine de connection : informations sur la base de données
         $strConnection = "mysql:host=localhost;dbname=projetperso;port=3306";
@@ -43,4 +43,4 @@
         $msg = 'ERREUR PDO dans ' .  $e->getMessage();
         // envoi du message dans la sortie, ici ce sera la page de l'utilisateur
         die($msg);
-    }
+    }*/

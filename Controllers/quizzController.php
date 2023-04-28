@@ -18,12 +18,13 @@ if($uri === "/" || $uri === "index.php"){
     /*createBonneReponse($pdo);
     createQuestion($pdo);*/
     $quizzInfo = selectQuizzInfo($pdo);
-    require_once "Templates/Questions/creerOuModifierQuestion.php";
+    $counterNbMauvaiseReponse = 0;
     if(isset($_POST['btnEnvoi']))
     {
-        
+        var_dump("clicled");
         createBonneReponse($pdo);
         createQuestion($pdo);
+        $QuestionId = $pdo->lastInsertId();
         foreach($_POST as $key => $value){
             if(!empty(str_replace(" ","", $value))){
                $counterNbMauvaiseReponse ++; 
@@ -31,10 +32,11 @@ if($uri === "/" || $uri === "index.php"){
             }
         }
         $counterNbMauvaiseReponse  -= 2;
-        for ($i=0; $i < $counterNbMauvaiseReponse; $i++) { 
-            createMauvaiseReponse($pdo,$i);
+        for ($i=1; $i < $counterNbMauvaiseReponse; $i++) { 
+            createMauvaiseReponse($pdo,$i,$QuestionId);
         }
     }
+    require_once "Templates/Questions/creerOuModifierQuestion.php";
 
 }elseif (str_contains($uri,'quizz?quizzId=')){
     $quizzs = selectQuizzQuestion($pdo);
