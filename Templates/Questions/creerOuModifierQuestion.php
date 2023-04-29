@@ -43,29 +43,32 @@
                     <input class="inputFormulaire" required type="text" name="BonneReponse" id="BonneReponse" placeholder="Bonne reponse">
                     <h1>Mauvaise reponse</h1>
                     <p>Ne rien mettre si vous ne voulez rien</p>
-                    <input class="inputFormulaire" required type="text" name="MauvaiseReponse1" id="MauvaiseReponse1" placeholder="Mauvaise reponse n°1">
-                    <input class="inputFormulaire" required type="text" name="MauvaiseReponse2" id="MauvaiseReponse2" placeholder="Mauvaise reponse n°2">
-                    <input class="inputFormulaire" required type="text" name="MauvaiseReponse3" id="MauvaiseReponse3" placeholder="Mauvaise reponse n°3">
+                    <input class="inputFormulaire" type="text" name="MauvaiseReponse1" id="MauvaiseReponse1" placeholder="Mauvaise reponse n°1">
+                    <input class="inputFormulaire" type="text" name="MauvaiseReponse2" id="MauvaiseReponse2" placeholder="Mauvaise reponse n°2">
+                    <input class="inputFormulaire" type="text" name="MauvaiseReponse3" id="MauvaiseReponse3" placeholder="Mauvaise reponse n°3">
                 </div>
                 <div>
                     <input class="buttonFormulaires" required type="submit" name="btnEnvoi" value="Créer" class="">
                 </div>
             </div>
-            <div class="containsAffichageQuestion">
-                <div class="affichageQuestion">
-                    <div class="questionEtButton">
-                        <h1>Quel est la capitale de la belgique ?</h1> 
-                        <input class="buttonModifierQuestion" required type="submit" name="btnEnvoi" value="Modifier" class="">
-                    </div>
-                    <div class="flex justify-content-space-around">
-                        <h2 class="affichageQuestionCreationBonne">sssssssss</h2>
-                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
-                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
-                        <h2 class="affichageQuestionCreationFausse">sssssssss</h2>
-                    </div>
+            
+                <div class="containsAffichageQuestion">
+                    
+                    <?php foreach($quizzs as $quizz) : ?>
+                        <div class="affichageQuestion">
+                            <div class="questionEtButton">
+                                <h1><?= $quizz->questionText ?></h1> 
+                                <input class="buttonModifierQuestion" required type="submit" name="btnEnvoi" value="Modifier" class="">
+                            </div>
+                            <div class="flex justify-content-space-around">
+                            <h2 class="affichageQuestionCreationBonne"><?= $quizz->bonneReponseText ?></h2>
+                            <?php foreach(recupMauvaiseReponsesPasShuffle($quizz,$pdo) as $index => $reponse) : ?>
+                                <h2 class="affichageQuestionCreationFausse"><?= $reponse ?></h2>
+                            <?php endforeach ?>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
                 </div>
-                
-            </div>
             
         </div>
         

@@ -21,7 +21,7 @@ if($uri === "/" || $uri === "index.php"){
     $counterNbMauvaiseReponse = 0;
     if(isset($_POST['btnEnvoi']))
     {
-        var_dump("clicled");
+        var_dump("clicked");
         createBonneReponse($pdo);
         createQuestion($pdo);
         $QuestionId = $pdo->lastInsertId();
@@ -35,7 +35,9 @@ if($uri === "/" || $uri === "index.php"){
         for ($i=1; $i < $counterNbMauvaiseReponse; $i++) { 
             createMauvaiseReponse($pdo,$i,$QuestionId);
         }
+        header('Location: creerOuModifierQuestion');
     }
+    $quizzs = selectQuizzQuestionPourCreation($pdo);
     require_once "Templates/Questions/creerOuModifierQuestion.php";
 
 }elseif (str_contains($uri,'quizz?quizzId=')){
@@ -59,5 +61,13 @@ function recupMauvaiseReponsesShuffle($quizz,$pdo) {
             array_push($reponses, $quizzMauvaiseReponse->mauvaiseReponseText);
         }
         shuffle($reponses);
+        return $reponses;
+}
+function recupMauvaiseReponsesPasShuffle($quizz,$pdo) {
+        $reponses = [];
+        $quizzMauvaiseReponses = selectQuizzMauvaiseReponse($pdo,$quizz -> questionId);
+        foreach($quizzMauvaiseReponses as $quizzMauvaiseReponse) {
+            array_push($reponses, $quizzMauvaiseReponse->mauvaiseReponseText);
+        }
         return $reponses;
 }

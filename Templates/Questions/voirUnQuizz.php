@@ -1,10 +1,5 @@
 
 <?php foreach($quizzs as $quizz) : ?>
-    <?php 
-        
-
-        
-    ?>
     <fieldset>
         <legend class="TitreQuestion"><?= $quizz->questionText ?></legend>
         <div class="question">

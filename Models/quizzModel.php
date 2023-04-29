@@ -85,6 +85,22 @@ function selectQuizzQuestion($pdo)
         die($message);
     }
 }
+function selectQuizzQuestionPourCreation($pdo)
+{
+    try{
+        $query = "SELECT bonne_reponse.*, question.* FROM bonne_reponse INNER JOIN question ON bonne_reponse.bonneReponseId = question.bonneReponseId INNER JOIN quizz ON question.quizzId = quizz.quizzId WHERE quizz.quizzId = :quizzId ORDER BY question.questionId DESC;"; //nom des colonnes utilisateur
+        $selectQuizz = $pdo->prepare($query);
+        $selectQuizz->execute([
+            'quizzId' => $_SESSION['quizzId'],
+        ]);
+        $quizz = $selectQuizz->fetchAll();
+        return $quizz;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
 
 
 
