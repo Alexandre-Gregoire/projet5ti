@@ -173,14 +173,36 @@ h5{
 .affichageCreation{
     font-size: 20px;
 }
+.creationQuestionEtValider{
+    width: 25%;
+    
+    margin: 5% auto;
+}
+.buttonFormulairesCréerQuizz{
+    text-align: center;
+    margin: 50px auto 50px auto;
+    width: 250px;
+    height: 50px;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+    font-weight: bold;
+    font-size: 32px;
+    background: #001D3D;
+    border-radius: 25px;
+}
+.buttonFormulairesCréerQuizz:hover{
+    color: black ;
+    background:#FFD60A;
+
+}
 .creationQuestion{
     color: white;
     border-radius: 10px;
     justify-content: space-around;
-    width: 25%;
+    width: 100%;
     height: fit-content;
-    margin: 5% auto;
     padding: 20px 20px 20px 20px;
+    
     background-color: #003566;
     border: 2px solid #020228;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -416,7 +438,7 @@ h1{
     border: solid black 3px;
 }
 .connexion{
-    color: white;o
+    color: white;
     border-radius: 10px;
     justify-content: space-around;
     width: 400px;

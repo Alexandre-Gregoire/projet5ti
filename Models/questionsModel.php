@@ -16,6 +16,7 @@ function createBonneReponse($pdo)
 }
 function createQuestion($pdo)
 {
+    
     try{
         $query = "INSERT INTO question (questionText,bonneReponseId,quizzId)  VALUES (:questionText,:bonneReponseId,:quizzId);"; 
         $newQuestion = $pdo->prepare($query);
@@ -34,7 +35,6 @@ function createQuestion($pdo)
 
 function createMauvaiseReponse($pdo,$counterMauvaiseReponse,$questionId)
 {   
-    var_dump($counterMauvaiseReponse);
     $NomMauvaiseReponse = "MauvaiseReponse".$counterMauvaiseReponse;
     try{
         $query = "insert into mauvaise_reponse (mauvaiseReponseText,questionId) values (:mauvaiseReponseText,:questionId);"; 
@@ -83,3 +83,29 @@ function selectQuizzInfo($pdo)
         die($message);
     }
 }
+
+function modifierMauvaiseReponse($pdo,$counterMauvaiseReponse)
+{
+    $NomMauvaiseReponse = "MauvaiseReponse".$counterMauvaiseReponse;
+    $NomMauvaiseReponseId = "IdMauvaiseReponse".$counterMauvaiseReponse;
+    try{
+        $query = "update mauvaise_reponse set mauvaiseReponseText = :mauvaiseReponseText where mauvaiseReponseId = :mauvaiseReponseId"; 
+        $quizzSelectInfo = $pdo->prepare($query);
+        $quizzSelectInfo->execute([
+            'mauvaiseReponseText' => $_POST[$NomMauvaiseReponse],
+            'mauvaiseReponseId' => $_POST[$NomMauvaiseReponseId]
+        ]);
+        $quizzInfos = $quizzSelectInfo->fetch();
+        return $quizzInfos;
+        
+    }
+    
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+
+}
+
+
+
