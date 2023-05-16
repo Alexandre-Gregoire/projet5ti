@@ -106,6 +106,39 @@ function modifierMauvaiseReponse($pdo,$counterMauvaiseReponse)
     }
 
 }
-
+function modifierBonneReponse($pdo)
+{
+    try{
+        $query = "UPDATE bonne_reponse SET bonneReponseText = :bonneReponseText WHERE bonneReponseId IN (SELECT bonneReponseId FROM question WHERE questionId = :questionId)"; 
+        $quizzSelectInfo = $pdo->prepare($query);
+        $quizzSelectInfo->execute([
+            'bonneReponseText' => $_POST["BonneReponse"],
+            'questionId' => $_GET["questionId"],
+        ]);
+        $quizzInfos = $quizzSelectInfo->fetch();
+        return $quizzInfos;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+function modifierQuestion($pdo)
+{
+    try{
+        $query = "update question set questionText = :questionText where questionId = :questionId"; 
+        $quizzSelectInfo = $pdo->prepare($query);
+        $quizzSelectInfo->execute([
+            'questionText' => $_POST["question"],
+            'questionId' => $_GET["questionId"],
+        ]);
+        $quizzInfos = $quizzSelectInfo->fetch();
+        return $quizzInfos;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
 
 

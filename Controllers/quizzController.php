@@ -49,6 +49,16 @@ if($uri === "/" || $uri === "index.php"){
         createUser($pdo);
         header('Location: connexion');
     }*/
+}elseif (str_contains($uri,'creerOuModifierQuizz?quizzId=')) {
+    $quizzInfo = selectQuizzInfo($pdo);
+    $categories = selectAllCategorie($pdo);
+    if(isset($_POST['btnEnvoi']))
+    {
+        
+        header('Location: creerOuModifierQuestion');
+    }
+    require_once "Templates/Questions/creerOuModifierQuizz.php";
+
 }
 elseif (str_contains($uri,'creerOuModifierQuestion?questionId=')){
     $quizzInfo = selectQuizzInfo($pdo);
@@ -62,25 +72,25 @@ elseif (str_contains($uri,'creerOuModifierQuestion?questionId=')){
             }
             
             $currentQuestionReponses = recupMauvaiseReponsesPasShuffle($currentQuestion,$pdo);
-    if(isset($_POST['btnEnvoi']))
-    {
-            
-            var_dump($currentQuestionReponses);
-            $counterNbMauvaiseReponse = 0;
-            foreach($_POST as $key => $value){
-                if(!empty(str_replace(" ","", $value)) && str_starts_with($key,"MauvaiseReponse")){
-                $counterNbMauvaiseReponse ++; 
+            if(isset($_POST['btnEnvoi']))
+            {
+                
+                $counterNbMauvaiseReponse = 0;
+                foreach($_POST as $key => $value){
+                    if(!empty(str_replace(" ","", $value)) && str_starts_with($key,"MauvaiseReponse")){
+                    $counterNbMauvaiseReponse ++; 
+                    }
                 }
-            }
-            var_dump($counterNbMauvaiseReponse);
-            for ($i=1; $i <= $counterNbMauvaiseReponse; $i++) { 
-                modifierMauvaiseReponse($pdo,$i);
+
+                for ($i=1; $i <= $counterNbMauvaiseReponse; $i++) { 
+                    modifierMauvaiseReponse($pdo,$i);
+                }
+                modifierBonneReponse($pdo);
+                modifierQuestion($pdo);
+                header('location:/creerOuModifierQuestion');
             }
         }
-        require_once "Templates/Questions/creerOuModifierQuestion.php";
-    }
-    
-    
+        require_once "Templates/Questions/creerOuModifierQuestion.php"; 
     
 }
 

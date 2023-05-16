@@ -122,3 +122,5 @@ function selectQuizzMauvaiseReponse($pdo,$questionId)
     }
 }
 
+
+

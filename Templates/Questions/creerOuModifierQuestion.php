@@ -15,7 +15,7 @@
                 
             </div>
             <div class="divButtonModifierQuizz">
-                <a href="" class="buttonModifierQuizz">Modifier</a>
+            <a href="creerOuModifierQuizz?quizzId=<?= $_SESSION["quizzId"] ?>" class="buttonModifierQuizz">Modifier</a>
             </div>
             
 
@@ -44,7 +44,7 @@
                         <input value="<?php if(isset($currentQuestion)) : ?><?= $currentQuestion -> questionText ?><?php endif ?>" class="inputFormulaire" required type="text" name="question" id="question" placeholder="Question">
                         <div>
                             <h1>Bonne reponse </h1>
-                            <input value="<?php if(isset($currentQuestion)) : ?><?= $currentQuestion -> bonneReponseText ?> <?php endif ?>" class="inputFormulaire" required type="text" name="BonneReponse" id="BonneReponse" placeholder="Bonne reponse">
+                            <input value="<?php if(isset($currentQuestion)) : ?><?= $currentQuestion -> bonneReponseText ?> <?php endif ?>" class="inputFormulaire" required type="text" name=" " id="BonneReponse" placeholder="Bonne reponse">
                             <h1>Mauvaise reponse</h1>
                             <p>Ne rien mettre si vous ne voulez rien</p>
                             
