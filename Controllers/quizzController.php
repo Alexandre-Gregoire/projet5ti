@@ -54,7 +54,7 @@ if($uri === "/" || $uri === "index.php"){
     $categories = selectAllCategorie($pdo);
     if(isset($_POST['btnEnvoi']))
     {
-        
+        ModifierQuizz($pdo);
         header('Location: creerOuModifierQuestion');
     }
     require_once "Templates/Questions/creerOuModifierQuizz.php";

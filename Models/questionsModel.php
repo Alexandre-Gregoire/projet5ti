@@ -106,6 +106,27 @@ function modifierMauvaiseReponse($pdo,$counterMauvaiseReponse)
     }
 
 }
+
+
+
+function ModifierQuizz($pdo)
+{
+    try{
+        $query = "update quizz set quizzNom = :quizzNom,quizzDifficulte = :quizzDifficulte,categorieId = :categorieId  where quizzId = :quizzId"; //nom des colonnes utilisateur
+        $newUser = $pdo->prepare($query);
+        $newUser->execute([
+            'quizzNom' => $_POST['NomQuizz'],
+            'quizzDifficulte' => $_POST['difficulte'],
+            'categorieId' => $_POST['categorieQuizz'],
+            'quizzId' => $_GET["quizzId"]
+
+        ]);
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
 function modifierBonneReponse($pdo)
 {
     try{
