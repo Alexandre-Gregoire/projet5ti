@@ -102,7 +102,42 @@ function selectQuizzQuestionPourCreation($pdo)
     }
 }
 
-
+function TestSiBonneReponse($pdo,$questionId)
+{
+    try{
+        $query = "SELECT bonneReponseText FROM bonne_reponse INNER JOIN question ON bonne_reponse.bonneReponseId = question.bonneReponseId WHERE question.questionId = :questionId";
+        $selectQuizz = $pdo->prepare($query);
+        $selectQuizz->execute([
+            'questionId' => $questionId
+            
+        ]);
+        $quizzBonneReponse = $selectQuizz->fetch();
+        return $quizzBonneReponse;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+function addScore($pdo,$score)
+{
+    try{
+        $query = "insert into score(score,date,quizzId,utilisateurId) values (:score,now(),:quizzId,:utilisateurId)";
+        $selectQuizz = $pdo->prepare($query);
+        $selectQuizz->execute([
+            'score' => $score,
+            'quizzId' => $_GET["quizzId"],
+            'utilisateurId' => $_SESSION["user"]-> utilisateurId
+            
+        ]);
+        $quizzMauvaiseReponse = $selectQuizz->fetchAll();
+        return $quizzMauvaiseReponse;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
 
 function selectQuizzMauvaiseReponse($pdo,$questionId)
 {

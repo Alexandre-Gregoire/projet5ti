@@ -39,16 +39,54 @@ if($uri === "/" || $uri === "index.php"){
     require_once "Templates/Questions/creerOuModifierQuestion.php";
 
 }elseif (str_contains($uri,'quizz?quizzId=')){
+   
     $quizzs = selectQuizzQuestion($pdo);
     $counterNbQuestion = 1; 
     $nbReponse = 1;
     $counterNbMauvaiseReponse = 1;
-    require_once "Templates/Questions/voirUnQuizz.php";
-    /*if(isset($_POST['btnEnvoi']))
+    if (!isset($_POST['btnEnvoi'])) $_SESSION['timer'] = time();
+    
+    $compteurPassageBoucle = 1;
+    $score = 0;
+    $nbBonneReponse = 0;
+    if(isset($_POST['btnEnvoi']))
     {
-        createUser($pdo);
-        header('Location: connexion');
-    }*/
+        foreach($quizzs as $question) 
+        {
+            $quizzBonneReponse = TestSiBonneReponse($pdo,$question->questionId);
+            
+            if ($quizzBonneReponse -> bonneReponseText == $_POST['Quizz' . $compteurPassageBoucle]) {
+                
+                var_dump("Bonne Reponse pour la question n°" . $compteurPassageBoucle);
+                $nbBonneReponse ++;
+            }
+            else {
+                var_dump("Mauvaise Reponse pour la question n°" . $compteurPassageBoucle);
+            }
+            
+
+            $compteurPassageBoucle += 1;
+        }
+        var_dump("passage quizz : ");
+        var_dump($compteurPassageBoucle);
+        $score = ($nbBonneReponse * (10000/($compteurPassageBoucle-1))) - ($nbBonneReponse * (time() - $_SESSION['timer']) * 10 );
+        $_SESSION['score'] = $score;
+        $_SESSION['nbBonneReponse'] = $nbBonneReponse;
+        $_SESSION['nbQuestion'] = $compteurPassageBoucle-1;
+        $_SESSION['temp'] = (time() - $_SESSION['timer']);
+
+        $_SESSION['timer'] = time();
+        addScore($pdo,$score);
+        header('location:/affichageScore');
+
+    }
+    require_once "Templates/Questions/voirUnQuizz.php";
+}elseif($uri === "/affichageScore"){
+
+
+    
+    require_once "Templates/Questions/affichageScore.php";
+
 }elseif (str_contains($uri,'creerOuModifierQuizz?quizzId=')) {
     $quizzInfo = selectQuizzInfo($pdo);
     $categories = selectAllCategorie($pdo);
