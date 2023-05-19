@@ -2,11 +2,9 @@
 function selectAllQuizzWithCategorie($pdo)
 {
     try {
-        $query = "SELECT quizz.quizzId, quizz.quizzNom, categorie.categorieNom, categorie.categorieImage, quizz.quizzDifficulte, MAX(score.score) AS score FROM quizz JOIN categorie ON quizz.categorieId = categorie.categorieId JOIN score ON quizz.quizzId = score.quizzId GROUP BY quizz.quizzId";
+        $query = "SELECT quizz.quizzId, quizz.quizzNom, categorie.categorieNom, categorie.categorieImage, quizz.quizzDifficulte, MAX(score.score) AS score, utilisateur.utilisateurPseudo FROM quizz JOIN categorie ON quizz.categorieId = categorie.categorieId JOIN score ON quizz.quizzId = score.quizzId JOIN utilisateur ON quizz.utilisateurId = utilisateur.utilisateurId GROUP BY quizz.quizzId";
         $selectAllQuizz = $pdo->prepare($query);
-        $selectAllQuizz->execute([
-            'utilisateurId'=> $_SESSION['user'] -> utilisateurId
-        ]);
+        $selectAllQuizz->execute();
         $quizzs = $selectAllQuizz->fetchAll();
 
         return $quizzs;
@@ -21,7 +19,9 @@ function selectAllQuizzUtilisateur($pdo)
     try {
         $query = "SELECT quizz.*, categorie.*, score.* FROM quizz JOIN categorie ON quizz.categorieId = categorie.categorieId JOIN (SELECT MAX(score) AS max_score, quizzId FROM score GROUP BY quizzId) max_scores ON quizz.quizzId = max_scores.quizzId JOIN score ON max_scores.quizzId = score.quizzId AND max_scores.max_score = score.score where quizz.utilisateurId = :utilisateurId;";
         $selectAllQuizz = $pdo->prepare($query);
-        $selectAllQuizz->execute();
+        $selectAllQuizz->execute([
+            'utilisateurId'=> $_SESSION['user'] -> utilisateurId
+        ]);
         $quizzs = $selectAllQuizz->fetchAll();
 
         return $quizzs;
@@ -38,7 +38,7 @@ function selectAllCategorie($pdo)
         $selectAllCategorie = $pdo->prepare($query);
         $selectAllCategorie->execute();
         $categories = $selectAllCategorie->fetchAll();
-        //var_dump($quizzs);
+
         return $categories;
     } catch (PDOException $e) {
         $message = $e->getMessage();
@@ -46,6 +46,7 @@ function selectAllCategorie($pdo)
     }
 
 }
+
 
 function createQuizz($pdo)
 {
@@ -154,6 +155,24 @@ function addScore($pdo,$score)
         die($message);
     }
 }
+function topScore($pdo)
+{
+    try{
+        $query = "SELECT score.score, utilisateur.utilisateurPseudo FROM score JOIN utilisateur ON score.utilisateurId = utilisateur.utilisateurId WHERE score.quizzId = :quizzId ORDER BY score.score DESC LIMIT 10;";
+        $selectQuizz = $pdo->prepare($query);
+        $selectQuizz->execute([
+            'quizzId' => $_GET["quizzId"]
+            
+        ]);
+        $toutLesScore = $selectQuizz->fetchAll();
+        return $toutLesScore;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
 
 function selectQuizzMauvaiseReponse($pdo,$questionId)
 {

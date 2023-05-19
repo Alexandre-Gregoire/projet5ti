@@ -13,7 +13,7 @@
                 
             </div>
             
-            <a href="quizz?quizzId=<?= $quizz->quizzId ?>" class="buttonCommencer">Commencer</a>
+            <a href="<?php if ($uri === '/mesQuizzs') : ?> creerOuModifierQuestion?quizzId=<?= $quizz->quizzId ?> <?php else : ?> quizz?quizzId=<?= $quizz->quizzId ?>  <?php endif ?>" class="buttonCommencer"><?php if ($uri === '/mesQuizzs') : ?>Modifier<?php else : ?> Commencer <?php endif ?></a>
 
 
             <div class="ChoixDif">
@@ -25,6 +25,7 @@
                 </div>   
                 
                 <h4>Meilleur score : <?= $quizz->score?></h6>
+                <h4>Créateur : <?= $quizz->utilisateurPseudo ?></h4>
             </div>
             
             <div class="ChoixDate">

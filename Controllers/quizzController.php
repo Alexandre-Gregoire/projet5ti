@@ -15,6 +15,7 @@ if($uri === "/" || $uri === "index.php"){
     }
     require_once "Templates/Questions/creerOuModifierQuizz.php";
 }elseif ($uri === "/creerOuModifierQuestion") {
+    
     $quizzInfo = selectQuizzInfo($pdo);
     $counterNbMauvaiseReponse = 0;
     if(isset($_POST['btnEnvoi']))
@@ -38,6 +39,9 @@ if($uri === "/" || $uri === "index.php"){
     $quizzs = selectQuizzQuestionPourCreation($pdo);
     require_once "Templates/Questions/creerOuModifierQuestion.php";
 
+}elseif (str_contains($uri,'creerOuModifierQuestion?quizzId=')) {
+    $_SESSION['quizzId'] = $_GET['quizzId'];
+    header('Location: creerOuModifierQuestion');
 }elseif (str_contains($uri,'quizz?quizzId=')){
    
     $quizzs = selectQuizzQuestion($pdo);
@@ -56,35 +60,34 @@ if($uri === "/" || $uri === "index.php"){
             $quizzBonneReponse = TestSiBonneReponse($pdo,$question->questionId);
             
             if ($quizzBonneReponse -> bonneReponseText == $_POST['Quizz' . $compteurPassageBoucle]) {
-                
-                var_dump("Bonne Reponse pour la question n°" . $compteurPassageBoucle);
                 $nbBonneReponse ++;
             }
-            else {
-                var_dump("Mauvaise Reponse pour la question n°" . $compteurPassageBoucle);
-            }
-            
-
             $compteurPassageBoucle += 1;
         }
-        var_dump("passage quizz : ");
-        var_dump($compteurPassageBoucle);
+        if ($compteurPassageBoucle == 1) {
+            $compteurPassageBoucle = 2;
+        }
         $score = ($nbBonneReponse * (10000/($compteurPassageBoucle-1))) - ($nbBonneReponse * (time() - $_SESSION['timer']) * 10 );
         $_SESSION['score'] = $score;
         $_SESSION['nbBonneReponse'] = $nbBonneReponse;
         $_SESSION['nbQuestion'] = $compteurPassageBoucle-1;
         $_SESSION['temp'] = (time() - $_SESSION['timer']);
-
         $_SESSION['timer'] = time();
         addScore($pdo,$score);
+        $_SESSION['classementScore'] = topScore($pdo);
         header('location:/affichageScore');
 
     }
     require_once "Templates/Questions/voirUnQuizz.php";
+}elseif($uri === "/mesQuizzs"){
+    $quizzs = selectAllQuizzUtilisateur($pdo);
+    if (isset($_POST['btnEnvoi'])) {
+        header('location:/creerOuModifierQuestion');
+    }
+    require_once "Templates/Questions/voirTousLesQuizz.php";
 }elseif($uri === "/affichageScore"){
-
-
-    
+    $classement = 1;
+    $toutLesScore = $_SESSION['classementScore'];
     require_once "Templates/Questions/affichageScore.php";
 
 }elseif (str_contains($uri,'creerOuModifierQuizz?quizzId=')) {
@@ -97,8 +100,7 @@ if($uri === "/" || $uri === "index.php"){
     }
     require_once "Templates/Questions/creerOuModifierQuizz.php";
 
-}
-elseif (str_contains($uri,'creerOuModifierQuestion?questionId=')){
+}elseif (str_contains($uri,'creerOuModifierQuestion?questionId=')){
     $quizzInfo = selectQuizzInfo($pdo);
     $counterNbMauvaiseReponse = 0;
     $quizzs = selectQuizzQuestionPourCreation($pdo);

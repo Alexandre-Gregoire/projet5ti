@@ -62,7 +62,7 @@
                 </div>
                 <form action="post">
                     <div class="buttonFormulairesCréerQuizz">
-                    <a href="index.php" class="buttonFormulairesCréerQuizz">valider</a>
+                    <a href="/" class="buttonFormulairesCréerQuizz">valider</a>
                     </div>
                 </form>
                 

@@ -37,7 +37,8 @@
                             <?php if(isset($_SESSION['user'])) : ?>
                                 <a href="profil">Voir profil</a>
                                 <a href="deconnexion">Deconnexion</a>
-                                <a href="#">Mes quizzs</a>
+                                <a href="mesQuizzs">Mes quizzs</a>
+                                
                             <?php else :?>
                                 <a href="connexion">Connexion</a>
                                 <a href="inscription">Inscription</a>
@@ -45,7 +46,14 @@
 
                     </div>
                     </li>
+                    
                     <li><a href="creerQuizz">Créer un quizz</a></li>
+                    <?php if(isset($_SESSION['user'])) :?>
+                        <?php if($_SESSION['user']->utilisateurRole == 'admin') :?>
+                            <li><a href="creerCategorie">Créer une categorie</a></li>
+                            <li><a href="listeCategorie">Liste des categorie</a></li>
+                        <?php endif ?>
+                    <?php endif?>
                 </ul>
             </div>
             
@@ -58,6 +66,7 @@
             <?php 
             require_once "Controllers/usersController.php";
             require_once "Controllers/quizzController.php";
+            require_once "Controllers/categorieController.php";
             ?>
         </main>
         <footer>

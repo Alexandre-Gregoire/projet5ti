@@ -26,7 +26,7 @@ function connectUser($pdo){
             'passwordUser' => $_POST['password'],
         ]);
         $user = $connectUser->fetch();
-        //var_dump($user);
+
         if($user)
         {
             $_SESSION['user'] = $user;
@@ -86,7 +86,7 @@ function deleteUser($pdo)
         $updateScoreUser->execute([
             'id' => $_SESSION["user"]->utilisateurId
         ]);
-        $query = "update quizz_utilisateur set utilisateurId=null where utilisateurId = :id";
+        $query = "update quizz set utilisateurId=null where utilisateurId = :id";
         $updateQuizzUser = $pdo->prepare($query);
         $updateQuizzUser->execute([
             'id' => $_SESSION["user"]->utilisateurId

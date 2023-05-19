@@ -18,7 +18,7 @@
                 <input class="inputFormulaireNumber" type="number" required id="difficulte" name="difficulte" min="1" max="10" <?php if (str_contains($uri,'creerOuModifierQuizz?quizzId=')) : ?> value="<?= $quizzInfo->quizzDifficulte ?>" <?php endif ?>>
             </div>
             <div>
-                <input class="buttonFormulaires" required type="submit" name="btnEnvoi" value="Créer" class="">
+                <input class="buttonFormulaires" required type="submit" name="btnEnvoi" value="<?php if (str_contains($uri,'creerOuModifierQuizz?quizzId=')) : ?>Modifier<?php else : ?>Créer<?php endif ?>" class="">
             </div>
 
 
