@@ -14,6 +14,7 @@ function createBonneReponse($pdo)
         die($message);
     }
 }
+
 function createQuestion($pdo)
 {
     
