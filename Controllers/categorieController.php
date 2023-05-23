@@ -4,7 +4,7 @@ if ($uri === "/creerCategorie") {
     if(isset($_POST['btnEnvoi']))
         {
             createCategorie($pdo);
-            header('Location: index');             
+            header('Location: listeCategorie');             
         }
     require_once "Templates/Categories/creerCategorie.php";
 }elseif($uri === "/listeCategorie"){
@@ -13,5 +13,5 @@ if ($uri === "/creerCategorie") {
 }elseif(str_contains($uri,'deleteCategorie?categorieId=')) {
     $categorieId = $_GET["categorieId"];
     deleteCategorie($pdo,$categorieId);  
-    header('Location: index');
+    header('Location: listeCategorie    ');
 }

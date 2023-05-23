@@ -8,10 +8,16 @@ if($uri === "/" || $uri === "index.php"){
     $categories = selectAllCategorie($pdo);
     if(isset($_POST['btnEnvoi']))
     {
-        createQuizz($pdo);
-        $_SESSION['quizzId'] = $pdo->lastInsertId();
-        createScore($pdo);
-        header('Location: creerOuModifierQuestion');
+        $messageErrorCreate = verifDataCreationQuizz();
+        if (!$messageErrorCreate) {
+            createQuizz($pdo);
+            $_SESSION['quizzId'] = $pdo->lastInsertId();
+            createScore($pdo);
+            header('Location: creerOuModifierQuestion');
+        }
+        
+
+       
     }
     require_once "Templates/Questions/creerOuModifierQuizz.php";
 }elseif ($uri === "/creerOuModifierQuestion") {
@@ -132,6 +138,8 @@ if($uri === "/" || $uri === "index.php"){
         }
         require_once "Templates/Questions/creerOuModifierQuestion.php"; 
     
+}elseif (str_contains($uri,'deleteQuizz?quizzId=')){
+
 }
 
 
@@ -152,4 +160,22 @@ function recupMauvaiseReponsesPasShuffle($quizz,$pdo) {
             $reponses[$quizzMauvaiseReponse -> mauvaiseReponseId] = $quizzMauvaiseReponse->mauvaiseReponseText;
         }
         return $reponses;
+}
+function verifDataCreationQuizz() {
+    
+    foreach($_POST as $key => $value){
+        if(empty(str_replace(" ","", $value))){
+            
+            $messageErrorCreate[$key] = "Votre " . $key . " est vide";
+        }
+        if($key == "NomQuizz" && strlen($value) > 25){
+            $messageErrorCreate[$key] = "Veuillez entrez un titre plus petit que 33 caractères";
+        }
+    }
+    if (isset($messageErrorCreate)) {
+        return $messageErrorCreate;
+    }
+    else {
+        return false;        
+    }
 }

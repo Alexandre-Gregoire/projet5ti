@@ -1,6 +1,6 @@
 <?php
     //----- Maison -----
-    
+    /*
     try {
         // chaine de connection : informations sur la base de données
         $strConnection = "mysql:host=localhost;dbname=projetperso;port=3306";
@@ -15,8 +15,9 @@
         // envoi du message dans la sortie, ici ce sera la page de l'utilisateur
         die($msg);
     }
+    */
     //----- ecole -----
-    /*
+    
     try {
         // chaine de connection : informations sur la base de données
         $strConnection = "mysql:host=10.10.51.252;dbname=alexandre;port=3306";
@@ -31,7 +32,7 @@
         // envoi du message dans la sortie, ici ce sera la page de l'utilisateur
         die($msg);
     }
-    */
+    
     //----- Spy -----
     /*
     try {

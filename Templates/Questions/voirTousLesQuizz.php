@@ -13,8 +13,7 @@
                 
             </div>
             
-            <a href="<?php if ($uri === '/mesQuizzs') : ?> creerOuModifierQuestion?quizzId=<?= $quizz->quizzId ?> <?php else : ?> quizz?quizzId=<?= $quizz->quizzId ?>  <?php endif ?>" class="buttonCommencer"><?php if ($uri === '/mesQuizzs') : ?>Modifier<?php else : ?> Commencer <?php endif ?></a>
-
+            <a href="<?php if ($uri === '/mesQuizzs') : ?>creerOuModifierQuestion?quizzId=<?= $quizz->quizzId ?> <?php else : ?>quizz?quizzId=<?= $quizz->quizzId ?><?php endif ?>" class="buttonCommencer  block"><?php if ($uri === '/mesQuizzs') : ?>Modifier<?php else : ?>Commencer<?php endif ?></a>
 
             <div class="ChoixDif">
                 <div class="flex">
@@ -24,7 +23,7 @@
                     <?php if ($quizz->quizzDifficulte%2 != 0) : ?><img class="star" src="Images/demiEtoile.png" alt=""><?php endif ?>
                 </div>   
                 
-                <h4>Meilleur score : <?= $quizz->score?></h6>
+                <h4>Meilleur score : <?php for ($i=0; $i < 4-strlen($quizz->score); $i++) : ?>0<?php endfor ?><?= $quizz->score?></h6>
                 <h4>Créateur : <?= $quizz->utilisateurPseudo ?></h4>
             </div>
             

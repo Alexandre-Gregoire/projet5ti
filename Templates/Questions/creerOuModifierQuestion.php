@@ -6,7 +6,7 @@
     <?php else : ?>
    
         <div class = "affichageTitreQuestion flex ">
-            <div> 
+            <div>  
                 <img class="image" src="<?= $quizzInfo->categorieImage ?>" alt="">
             </div>
             <div class="ChoixTitre"> 
@@ -15,9 +15,13 @@
                 
             </div>
             <div class="divButtonModifierQuizz">
-            <a href="creerOuModifierQuizz?quizzId=<?= $_SESSION["quizzId"] ?>" class="buttonModifierQuizz">Modifier</a>
+                <a href="creerOuModifierQuizz?quizzId=<?= $_SESSION["quizzId"] ?>" class="buttonModifierQuizz">Modifier</a>
             </div>
-            
+            <?php if($uri == '/creerOuModifierQuestion') : ?>
+                <div class="divButtonModifierQuizz">
+                    <a href="deleteQuizz?quizzId=<?= $_SESSION["quizzId"] ?>" class="buttonModifierQuizz">suprimmer</a>
+                </div>
+            <?php endif ?>
 
 
             <div class="ChoixDif">
@@ -61,9 +65,9 @@
                     </form>
                 </div>
                 <form action="post">
-                    <div class="buttonFormulairesCréerQuizz">
-                    <a href="/" class="buttonFormulairesCréerQuizz">valider</a>
-                    </div>
+                    
+                    <a href="/" class="buttonFormulairesCréerQuizz" >valider</a>
+                    
                 </form>
                 
                 

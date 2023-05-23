@@ -23,9 +23,6 @@ if ($uri === "/inscription") {
             connectUser($pdo);
             header('location:/');
         }
-        else{
-            
-        }
     }
     require_once "Templates/users/connexion.php";
 }elseif ($uri === "/profil") {
