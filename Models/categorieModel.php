@@ -4,8 +4,8 @@ function createCategorie($pdo){
         $query = "insert into categorie (categorieNom,categorieImage) values (:categorieNom,:categorieImage)";
         $selectAllCategorie = $pdo->prepare($query);
         $selectAllCategorie->execute([
-            'categorieNom' => $_POST['categorieNom'],
-            'categorieImage' => $_POST['categorieImage'],
+            'categorieNom' => htmlentities($_POST['categorieNom']),
+            'categorieImage' => htmlentities($_POST['categorieImage']),
 
         ]);
         $categories = $selectAllCategorie->fetchAll();

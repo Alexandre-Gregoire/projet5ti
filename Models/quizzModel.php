@@ -17,7 +17,7 @@ function selectAllQuizzWithCategorie($pdo)
 function selectAllQuizzUtilisateur($pdo)
 {
     try {
-        $query = "SELECT quizz.*, categorie.*, score.* FROM quizz JOIN categorie ON quizz.categorieId = categorie.categorieId JOIN (SELECT MAX(score) AS max_score, quizzId FROM score GROUP BY quizzId) max_scores ON quizz.quizzId = max_scores.quizzId JOIN score ON max_scores.quizzId = score.quizzId AND max_scores.max_score = score.score where quizz.utilisateurId = :utilisateurId;";
+        $query = "SELECT quizz.quizzId, quizz.quizzNom, categorie.categorieNom, categorie.categorieImage, quizz.quizzDifficulte, MAX(score.score) AS score, utilisateur.utilisateurPseudo FROM quizz JOIN categorie ON quizz.categorieId = categorie.categorieId JOIN score ON quizz.quizzId = score.quizzId JOIN utilisateur ON quizz.utilisateurId = utilisateur.utilisateurId where quizz.utilisateurId = :utilisateurId GROUP BY quizz.quizzId ";
         $selectAllQuizz = $pdo->prepare($query);
         $selectAllQuizz->execute([
             'utilisateurId'=> $_SESSION['user'] -> utilisateurId
@@ -54,10 +54,10 @@ function createQuizz($pdo)
         $query = "INSERT INTO quizz (quizzNom, quizzDifficulte, quizzDateCreation, utilisateurId, categorieId)  VALUES (:quizzNom, :quizzDifficulte, NOW(), :utilisateurId, :categorieId);"; //nom des colonnes utilisateur
         $newUser = $pdo->prepare($query);
         $newUser->execute([
-            'quizzNom' => $_POST['NomQuizz'],
-            'quizzDifficulte' => $_POST['difficulte'],
+            'quizzNom' => htmlentities($_POST['NomQuizz']),
+            'quizzDifficulte' => htmlentities($_POST['difficulte']),
             'utilisateurId' => $_SESSION["user"]->utilisateurId,
-            'categorieId' => $_POST['categorieQuizz']
+            'categorieId' => htmlentities($_POST['categorieQuizz'])
 
         ]);
     }
@@ -123,12 +123,12 @@ function TestSiBonneReponse($pdo,$questionId)
 {
     try{
         $query = "SELECT bonneReponseText FROM bonne_reponse INNER JOIN question ON bonne_reponse.bonneReponseId = question.bonneReponseId WHERE question.questionId = :questionId";
-        $selectQuizz = $pdo->prepare($query);
-        $selectQuizz->execute([
+        $selectQuizzBonneReponse = $pdo->prepare($query);
+        $selectQuizzBonneReponse->execute([
             'questionId' => $questionId
             
         ]);
-        $quizzBonneReponse = $selectQuizz->fetch();
+        $quizzBonneReponse = $selectQuizzBonneReponse->fetch();
         return $quizzBonneReponse;
     }
     catch(PDOException $e){
@@ -140,15 +140,15 @@ function addScore($pdo,$score)
 {
     try{
         $query = "insert into score(score,date,quizzId,utilisateurId) values (:score,now(),:quizzId,:utilisateurId)";
-        $selectQuizz = $pdo->prepare($query);
-        $selectQuizz->execute([
+        $selectScore = $pdo->prepare($query);
+        $selectScore->execute([
             'score' => $score,
             'quizzId' => $_GET["quizzId"],
             'utilisateurId' => $_SESSION["user"]-> utilisateurId
             
         ]);
-        $quizzMauvaiseReponse = $selectQuizz->fetchAll();
-        return $quizzMauvaiseReponse;
+        $score = $selectScore->fetchAll();
+        return $score;
     }
     catch(PDOException $e){
         $message = $e->getMessage();

@@ -5,7 +5,7 @@ function createBonneReponse($pdo)
         $query = "INSERT INTO Bonne_Reponse (bonneReponseText)  VALUES (:bonneReponseText);"; 
         $newBonneReponse = $pdo->prepare($query);
         $newBonneReponse->execute([
-            'bonneReponseText' => $_POST['BonneReponse'],
+            'bonneReponseText' => htmlentities($_POST['BonneReponse']),
 
         ]);
     }
@@ -22,7 +22,7 @@ function createQuestion($pdo)
         $query = "INSERT INTO question (questionText,bonneReponseId,quizzId)  VALUES (:questionText,:bonneReponseId,:quizzId);"; 
         $newQuestion = $pdo->prepare($query);
         $newQuestion->execute([
-            'questionText' => $_POST['question'],
+            'questionText' => htmlentities($_POST['question']),
             'bonneReponseId' => $pdo->lastInsertId(),
             'quizzId' => $_SESSION["quizzId"]
 
@@ -41,7 +41,7 @@ function createMauvaiseReponse($pdo,$counterMauvaiseReponse,$questionId)
         $query = "insert into mauvaise_reponse (mauvaiseReponseText,questionId) values (:mauvaiseReponseText,:questionId);"; 
         $newMauvaiseReponse = $pdo->prepare($query);
         $newMauvaiseReponse->execute([
-            'mauvaiseReponseText' => $_POST[$NomMauvaiseReponse],
+            'mauvaiseReponseText' => htmlentities($_POST[$NomMauvaiseReponse]),
             'questionId' => $questionId,
 
         ]);
@@ -93,8 +93,8 @@ function modifierMauvaiseReponse($pdo,$counterMauvaiseReponse)
         $query = "update mauvaise_reponse set mauvaiseReponseText = :mauvaiseReponseText where mauvaiseReponseId = :mauvaiseReponseId"; 
         $quizzSelectInfo = $pdo->prepare($query);
         $quizzSelectInfo->execute([
-            'mauvaiseReponseText' => $_POST[$NomMauvaiseReponse],
-            'mauvaiseReponseId' => $_POST[$NomMauvaiseReponseId]
+            'mauvaiseReponseText' => htmlentities($_POST[$NomMauvaiseReponse]),
+            'mauvaiseReponseId' => htmlentities($_POST[$NomMauvaiseReponseId])
         ]);
         $quizzInfos = $quizzSelectInfo->fetch();
         return $quizzInfos;
@@ -116,9 +116,9 @@ function ModifierQuizz($pdo)
         $query = "update quizz set quizzNom = :quizzNom,quizzDifficulte = :quizzDifficulte,categorieId = :categorieId  where quizzId = :quizzId"; //nom des colonnes utilisateur
         $newUser = $pdo->prepare($query);
         $newUser->execute([
-            'quizzNom' => $_POST['NomQuizz'],
-            'quizzDifficulte' => $_POST['difficulte'],
-            'categorieId' => $_POST['categorieQuizz'],
+            'quizzNom' => htmlentities($_POST['NomQuizz']),
+            'quizzDifficulte' => htmlentities($_POST['difficulte']),
+            'categorieId' => htmlentities($_POST['categorieQuizz']),
             'quizzId' => $_GET["quizzId"]
 
         ]);
@@ -134,7 +134,7 @@ function modifierBonneReponse($pdo)
         $query = "UPDATE bonne_reponse SET bonneReponseText = :bonneReponseText WHERE bonneReponseId IN (SELECT bonneReponseId FROM question WHERE questionId = :questionId)"; 
         $quizzSelectInfo = $pdo->prepare($query);
         $quizzSelectInfo->execute([
-            'bonneReponseText' => $_POST["BonneReponse"],
+            'bonneReponseText' => htmlentities($_POST["BonneReponse"]),
             'questionId' => $_GET["questionId"],
         ]);
         $quizzInfos = $quizzSelectInfo->fetch();
@@ -151,7 +151,7 @@ function modifierQuestion($pdo)
         $query = "update question set questionText = :questionText where questionId = :questionId"; 
         $quizzSelectInfo = $pdo->prepare($query);
         $quizzSelectInfo->execute([
-            'questionText' => $_POST["question"],
+            'questionText' => htmlentities($_POST["question"]),
             'questionId' => $_GET["questionId"],
         ]);
         $quizzInfos = $quizzSelectInfo->fetch();

@@ -5,9 +5,9 @@ function createUser($pdo)
         $query = "insert into utilisateur (utilisateurPseudo, utilisateurMdp, utilisateurEmail, utilisateurRole) values (:nomUser, :mdpUser, :mailUser, :roleUser)"; //nom des colonnes utilisateur
         $newUser = $pdo->prepare($query);
         $newUser->execute([
-            'nomUser' => $_POST["pseudo"],
-            'mailUser' => $_POST["mail"],
-            'mdpUser' => $_POST["password"],
+            'nomUser' => htmlentities($_POST["pseudo"]),
+            'mailUser' => htmlentities($_POST["mail"]),
+            'mdpUser' => htmlentities($_POST["password"]),
             'roleUser' => 'membre' 
             
         ]);
@@ -22,8 +22,8 @@ function connectUser($pdo){
         $query = "select * from utilisateur where utilisateurPseudo = :loginUser and utilisateurMdp = :passwordUser";
         $connectUser = $pdo->prepare($query);
         $connectUser->execute([
-            'loginUser' => $_POST['pseudo'],
-            'passwordUser' => $_POST['password'],
+            'loginUser' => htmlentities($_POST['pseudo']),
+            'passwordUser' => htmlentities($_POST['password']),
         ]);
         $user = $connectUser->fetch();
 
@@ -46,9 +46,9 @@ function updateUser($pdo)
         $query = "UPDATE utilisateur SET utilisateurPseudo = :utilisateurPseudo, utilisateurMdp = :utilisateurMdp, utilisateurEmail = :utilisateurEmail WHERE utilisateurId = :id";
         $updateUser = $pdo->prepare($query);
         $updateUser->execute([
-            'utilisateurPseudo' => $_POST['pseudo'],
-            'utilisateurMdp' => $_POST['password'],
-            'utilisateurEmail' => $_POST['mail'],
+            'utilisateurPseudo' => htmlentities($_POST['pseudo']),
+            'utilisateurMdp' => htmlentities($_POST['password']),
+            'utilisateurEmail' => htmlentities($_POST['mail']),
             'id' => $_SESSION["user"]->utilisateurId
         ]);
         reloadSession($pdo);
