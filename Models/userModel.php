@@ -101,3 +101,206 @@ function deleteUser($pdo)
         die($message);
     }
 }
+
+function testConversation($pdo)
+{
+    try{
+        $query = " SELECT * FROM alexandre.utilisateur_conversation natural join conversation where utilisateurId = :userId1 and conversationId in (SELECT conversationId FROM alexandre.utilisateur_conversation where utilisateurId = :userId2) and conversationType = 'binaire'";
+
+        $selectAllUser = $pdo->prepare($query);
+        $selectAllUser->execute([
+            'userId1' => $_SESSION['user']->utilisateurId, 
+            'userId2' => $_GET['utilisateurId']
+        ]);
+        $users = $selectAllUser->fetch();
+
+        return $users;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+
+function selectAllConversationGroupe($pdo)
+{
+    try{
+        $query = " SELECT * FROM conversation where conversationType = 'groupe'";
+
+        $selectAllUser = $pdo->prepare($query);
+        $selectAllUser->execute();
+        $groupes = $selectAllUser->fetchAll();
+
+        return $groupes;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+function recupAllMessage($pdo,$conversationId)
+{
+    try{
+        $query = "select * from message where conversationId = :conversationId";
+
+        $selectAllUser = $pdo->prepare($query);
+        $selectAllUser->execute([
+            'conversationId' => $conversationId
+        ]);
+        $messages = $selectAllUser->fetchAll();
+
+        return $messages;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+function envoieMessage($pdo,$conversationId)
+{
+    try{
+        $query = "INSERT INTO message (messageText, messageDate, messageHeure,conversationId,utilisateurId) VALUES (:messageText, CAST(NOW() AS DATE), CAST(NOW() AS TIME),:conversationId,:utilisateurId);";
+
+        $selectAllUser = $pdo->prepare($query);
+        $selectAllUser->execute([
+            'messageText' => htmlentities($_POST['textMessage']),
+            'conversationId' => $conversationId,
+            'utilisateurId' => $_SESSION['user']->utilisateurId,
+
+
+        ]);
+        $groupes = $selectAllUser->fetchAll();
+
+        return $groupes;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+function updateMessage($pdo)
+{
+    try{
+        $query = "update message set messageText = 'message suprimmer par son redacteur'  where messageId = :messageId";
+
+        $selectAllUser = $pdo->prepare($query);
+        $selectAllUser->execute([
+            'messageId' => $_GET['messageId'],
+        ]);
+        $groupes = $selectAllUser->fetchAll();
+
+        return $groupes;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+function deleteMessage($pdo)
+{
+    try{
+        $query = "delete from message where messageId = :messageId";
+
+        $selectAllUser = $pdo->prepare($query);
+        $selectAllUser->execute([
+            'messageId' => $_GET['messageId'],
+        ]);
+        $groupes = $selectAllUser->fetchAll();
+
+        return $groupes;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+function createConversationGroupe($pdo)
+{
+    try{
+        $query = "INSERT INTO conversation (conversationType) VALUES ('groupe')";
+        $nouvelleConversation = $pdo->prepare($query);
+        $nouvelleConversation->execute();
+        $conversationId = $pdo->lastInsertId();
+        foreach($_POST['utilisateurGroupe'] as $utilisateurGroupe){
+
+            $query = "INSERT INTO utilisateur_conversation (conversationId,utilisateurId) VALUES (:conversationId,:utilisateurId)";
+            $nouvelleConversation = $pdo->prepare($query);
+            $nouvelleConversation->execute([
+                'conversationId' => $conversationId,
+                'utilisateurId' => $utilisateurGroupe, 
+            ]);
+        }
+        
+        $query = "INSERT INTO utilisateur_conversation (conversationId,utilisateurId) VALUES (:conversationId,:utilisateurId)";
+        $nouvelleConversation = $pdo->prepare($query);
+        $nouvelleConversation->execute([
+            'conversationId' => $conversationId,
+            'utilisateurId' => $_SESSION['user']->utilisateurId, 
+        ]);
+        return $conversationId;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+
+
+
+
+
+
+
+
+function createConversation($pdo)
+{
+    try{
+        $query = "INSERT INTO conversation (conversationType) VALUES ('binaire')";
+        $nouvelleConversation = $pdo->prepare($query);
+        $nouvelleConversation->execute();
+        $conversationId = $pdo->lastInsertId();
+        $query = "INSERT INTO utilisateur_conversation (conversationId,utilisateurId) VALUES (:conversationId,:utilisateurId)";
+        $nouvelleConversation = $pdo->prepare($query);
+        $nouvelleConversation->execute([
+            'conversationId' => $conversationId,
+            'utilisateurId' => $_SESSION['user']->utilisateurId, 
+        ]);
+        $query = "INSERT INTO utilisateur_conversation (conversationId,utilisateurId) VALUES (:conversationId,:utilisateurId)";
+        $nouvelleConversation = $pdo->prepare($query);
+        $nouvelleConversation->execute([
+            'conversationId' => $conversationId,
+            'utilisateurId' => $_GET['utilisateurId'], 
+        ]);
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+
+
+
+function selectAllUserExceptConnected($pdo)
+{
+    try{
+        $query = "select * from utilisateur where utilisateurId != :utilisateurId"; //nom des colonnes utilisateur
+        $selectAllUser = $pdo->prepare($query);
+        $selectAllUser->execute([
+            'utilisateurId' => $_SESSION['user']->utilisateurId, 
+            
+        ]);
+        $users = $selectAllUser->fetchAll();
+        return $users;
+    }
+    catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}

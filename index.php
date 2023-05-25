@@ -38,6 +38,7 @@
                                 <a href="profil">Voir profil</a>
                                 <a href="deconnexion">Deconnexion</a>
                                 <a href="mesQuizzs">Mes quizzs</a>
+                                <a href="discuter">Discuter</a>
                                 
                             <?php else :?>
                                 <a href="connexion">Connexion</a>

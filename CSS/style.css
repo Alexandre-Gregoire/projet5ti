@@ -4,6 +4,25 @@
 
 
 
+.droite{
+    margin-left: 600px;
+}
+.buttonChat{
+    text-align: center;
+    
+    padding: 0 50px 0 50px;
+    height: 50px;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+    font-weight: bold;
+    font-size: 32px;
+    background: #001D3D;
+    border-radius: 25px;
+}
+
+.message{
+    margin: 0 200px 0 200px;
+}
 .profil {
     margin: 50px auto;
     width: 70%;
@@ -84,7 +103,7 @@ a {
     font-family: 'Baloo Chettan 2';
     color: white;
     font-size: 32px;
-    padding: 0 5px 0 5px;
+
     
     cursor: pointer;
 }
@@ -545,3 +564,18 @@ h1{
 
 
     
+.aChat {
+    text-decoration: none;
+    font-family: 'Baloo Chettan 2';
+    color: white;
+    font-size: 32px;
+
+    
+    cursor: pointer;
+}
+
+.aChat:hover {
+    background: #FFD60A;
+    color: black;
+    border-radius: 20px;
+}
