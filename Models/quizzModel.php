@@ -198,12 +198,31 @@ function selectQuizzMauvaiseReponse($pdo,$questionId)
 function deleteQuizz($pdo)
 {
     try {
-        $query = "DELETE FROM bonne_reponse WHERE questionId IN ( SELECT questionId FROM question WHERE quizzId = :quizzId );";
+        $query = "DELETE FROM score WHERE quizzId = :quizzId;";
         $updateScoreUser = $pdo->prepare($query);
         $updateScoreUser->execute([
             'quizzId' => $_GET["quizzId"]
         ]);
-        
+        $query = "DELETE FROM mauvaise_reponse WHERE questionId IN (SELECT questionId FROM question WHERE quizzId = :quizzId);";
+        $updateScoreUser = $pdo->prepare($query);
+        $updateScoreUser->execute([
+            'quizzId' => $_GET["quizzId"]
+        ]);
+        $query = "DELETE FROM question WHERE quizzId = :quizzId;";
+        $updateScoreUser = $pdo->prepare($query);
+        $updateScoreUser->execute([
+            'quizzId' => $_GET["quizzId"]
+        ]);
+        $query = "DELETE FROM bonne_reponse WHERE bonneReponseId IN (SELECT question.bonneReponseId FROM question WHERE question.quizzId = :quizzId);";
+        $updateScoreUser = $pdo->prepare($query);
+        $updateScoreUser->execute([
+            'quizzId' => $_GET["quizzId"]
+        ]);
+        $query = "DELETE FROM quizz WHERE quizzId = :quizzId;";
+        $updateScoreUser = $pdo->prepare($query);
+        $updateScoreUser->execute([
+            'quizzId' => $_GET["quizzId"]
+        ]);
     } catch (PDOException $e) {
         $message = $e->getMessage();
         die($message);

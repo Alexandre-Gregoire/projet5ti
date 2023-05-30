@@ -3,7 +3,26 @@
 
 
 
-
+.buttonSupp{
+    text-align: center;
+    width: 250px;
+    height: 50px;
+    color: white;
+    font-family: 'Baloo Chettan 2';
+    font-weight: bold;
+    font-size: 32px;
+    background: #810101;
+    border-radius: 25px;
+    margin-top: 10px;
+    position: absolute;
+    margin-left: 27%;
+    margin-right: 100px;
+    border: 3px solid black;
+}
+.buttonSupp:hover{
+    background: #FFD60A;
+    color: black;
+}
 .droite{
     margin-left: 600px;
 }
@@ -533,7 +552,7 @@ h1{
     border-radius: 25px;
     margin-top: 85px;
     position: absolute;
-    margin-left: 475px;
+    margin-left: 27%;
     margin-right: 100px;
     border: 3px solid black;
 }

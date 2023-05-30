@@ -13,8 +13,8 @@
                 
             </div>
             
-            <a href="<?php if ($uri === '/mesQuizzs') : ?>creerOuModifierQuestion?quizzId=<?= $quizz->quizzId ?> <?php else : ?>quizz?quizzId=<?= $quizz->quizzId ?><?php endif ?>" class="buttonCommencer  block"><?php if ($uri === '/mesQuizzs') : ?>Modifier<?php else : ?>Commencer<?php endif ?></a>
-
+            <?php if ($uri === '/mesQuizzs') : ?><a href="deleteQuizz?quizzId=<?= $quizz->quizzId ?>" class="buttonSupp">Suprimmer</a><?php endif ?>
+            <a href="<?php if ($uri === '/mesQuizzs') : ?>creerOuModifierQuestion?quizzId=<?= $_SESSION["quizzId"] ?> <?php else : ?>quizz?quizzId=<?= $quizz->quizzId ?><?php endif ?>" class="buttonCommencer"><?php if ($uri === '/mesQuizzs') : ?>Modifier<?php else : ?>Commencer<?php endif ?></a>
             <div class="ChoixDif">
                 <div class="flex">
                     <h4>Difficultée : </h4>

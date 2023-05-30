@@ -139,7 +139,8 @@ if($uri === "/" || $uri === "index.php"){
         require_once "Templates/Questions/creerOuModifierQuestion.php"; 
     
 }elseif (str_contains($uri,'deleteQuizz?quizzId=')){
-
+    deleteQuizz($pdo);
+    header('location:/mesQuizzs');
 }
 
 
