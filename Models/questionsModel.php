@@ -164,3 +164,29 @@ function modifierQuestion($pdo)
 }
 
 
+
+
+function deleteQuestion($pdo)
+{
+    try {
+        $query = "DELETE FROM mauvaise_reponse WHERE questionId = :questionId";
+        $updateScoreUser = $pdo->prepare($query);
+        $updateScoreUser->execute([
+            'questionId' => $_GET["questionId"]
+        ]);
+        $query = "DELETE FROM question WHERE questionId = :questionId;";
+        $updateScoreUser = $pdo->prepare($query);
+        $updateScoreUser->execute([
+            'questionId' => $_GET["questionId"]
+        ]);
+        $query = "DELETE FROM bonne_reponse WHERE bonneReponseId IN (SELECT question.bonneReponseId FROM question WHERE question.questionId = :questionId);";
+        $updateScoreUser = $pdo->prepare($query);
+        $updateScoreUser->execute([
+            'questionId' => $_GET["questionId"]
+        ]);
+        
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}

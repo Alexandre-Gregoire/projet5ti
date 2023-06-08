@@ -80,6 +80,7 @@
                         <div class="affichageQuestion">
                             <div class="questionEtButton">
                                 <h1><?= $quizz->questionText ?></h1> 
+                                <a href="supprimerQuestion?questionId=<?= $quizz->questionId ?>" class="buttonModifierQuestion">Supprimer</a>
                                 <a href="creerOuModifierQuestion?questionId=<?= $quizz->questionId ?>" class="buttonModifierQuestion">Modifier</a>
                             </div>
                             <div class="flex justify-content-space-around">

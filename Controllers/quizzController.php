@@ -142,6 +142,10 @@ if($uri === "/" || $uri === "index.php"){
     deleteQuizz($pdo);
     header('location:/mesQuizzs');
 }
+elseif (str_contains($uri,'supprimerQuestion?questionId=')){
+    deleteQuestion($pdo);
+    header('location:/creerOuModifierQuestion');
+}
 
 
 function recupMauvaiseReponsesShuffle($quizz,$pdo) {

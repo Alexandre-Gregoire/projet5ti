@@ -1,7 +1,7 @@
 <form action="" method="post">
         <div class="connexion">
             <h1>Connexion</h1>   
-            <h5>Entrer vos identifiants</h5>
+            <h5>Entrer vos identifiants</h5>        
             <div>
                 <h5>Pseudo</h5>
                 <input class="inputFormulaire" required type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
